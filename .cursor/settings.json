@@ -1,0 +1,29 @@
+{
+  "editor": {
+    "tabSize": 2,
+    "insertSpaces": true,
+    "rulers": [80, 100],
+    "wordWrap": "off"
+  },
+  "typescript": {
+    "preferences": {
+      "importModuleSpecifier": "non-relative"
+    }
+  },
+  "files": {
+    "exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/.next": true
+    },
+    "associations": {
+      "*.tsx": "typescriptreact"
+    }
+  },
+  "search": {
+    "exclude": {
+      "**/node_modules": true,
+      "**/.next": true
+    }
+  }
+}
