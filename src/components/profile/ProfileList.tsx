@@ -77,7 +77,6 @@ export function ProfileList({
                 aria-label={`Page ${pageObj.value}`}
                 variant={pageObj.value === page ? "solid" : "ghost"}
                 colorScheme={pageObj.value === page ? "teal" : undefined}
-                onClick={() => onPageChange && onPageChange(pageObj.value)}
               >
                 {pageObj.value}
               </IconButton>

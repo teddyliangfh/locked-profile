@@ -10,15 +10,13 @@ export function useCharacters(page: number) {
   const info = data?.characters?.info || {};
   const currentPage = page;
   const totalCount = info.count || 0;
-  const totalPages = info.pages || 0;
 
+ //todo define data type in /types
   return {
     characters: data?.characters?.results || [],
     loading,
     error,
-    raw: data,
     currentPage, // current page number
     totalCount,  // total number of items
-    totalPages,  // total number of pages
   };
 } 
