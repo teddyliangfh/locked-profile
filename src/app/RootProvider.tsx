@@ -1,13 +1,13 @@
 "use client";
 import { ApolloProvider } from "@apollo/client";
 import createApolloClient from "@/graphql/apolloClient";
-import { Provider } from "@/components/ui/provider";
+import { UIProvider } from "@/providers/UIProvider";
 
 export function RootProvider({ children }: { children: React.ReactNode }) {
   const client = createApolloClient()
   return (
     <ApolloProvider client={client}>
-      <Provider>{children}</Provider>
+      <UIProvider>{children}</UIProvider>
     </ApolloProvider>
   );
 } 
