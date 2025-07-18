@@ -60,6 +60,7 @@ export function ProfileList({
       <Pagination.Root
         count={totalCount}
         page={page}
+        pageSize={20}
         onPageChange={onPageChange ? (e) => onPageChange(e.page) : undefined}
       >
         <ButtonGroup variant="ghost" size="sm">

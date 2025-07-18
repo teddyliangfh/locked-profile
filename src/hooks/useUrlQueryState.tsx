@@ -18,7 +18,6 @@ export function useUrlQueryState() {
 
   // setQuery: update pageNumber in the URL
   const setQuery = useCallback((update: { pageNumber?: string | number }) => {
-    debugger
     const params = new URLSearchParams(searchParams.toString());
     if (update.pageNumber !== undefined) {
       const value = String(update.pageNumber);
