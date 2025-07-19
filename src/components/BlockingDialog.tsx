@@ -82,7 +82,6 @@ export function BlockingDialog({
           >
             {/* Header with title */}
             <DialogHeader
-              bg={{ base: "formbodyBg", _dark: "formbodyBgDark" }}
               px={{ base: 3, md: 5 }}
               py={{ base: 2, md: 3 }}
             >
@@ -92,7 +91,6 @@ export function BlockingDialog({
             </DialogHeader>
             {/* Body with form fields */}
             <DialogBody
-              bg={{ base: "formbodyBg", _dark: "formbodyBgDark" }}
               px={{ base: 3, md: 5 }}
               py={{ base: 3, md: 4 }}
             >
@@ -135,7 +133,6 @@ export function BlockingDialog({
             </DialogBody>
             {/* Footer with Save and optional Cancel buttons */}
             <DialogFooter
-              bg={{ base: "formbodyBg", _dark: "formbodyBgDark" }}
               px={{ base: 3, md: 5 }}
               py={{ base: 3, md: 4 }}
               display="flex"
@@ -159,9 +156,9 @@ export function BlockingDialog({
               <Dialog.ActionTrigger asChild>
                 <Button
                   variant="outline"
-                  colorScheme="cyan"
                   onClick={handleSubmit}
-                  bg="cyberpunk.gradient"
+                  color="cyberpunk.text"
+                  bg="cyberpunk.gradientBluePurple"
                   _hover={{
                     transform: "translateY(-1px)",
                   }}
