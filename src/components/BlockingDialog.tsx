@@ -111,7 +111,7 @@ export function BlockingDialog({
                 </Fieldset.Content>
               </Fieldset.Root>
               {error && (
-                <Text color="red" fontSize="sm" mt={2}>
+                <Text color="red" fontSize="sm" mt={2} role="alert">
                   {error}
                 </Text>
               )}
@@ -159,6 +159,7 @@ export function BlockingDialog({
                 onClick={handleClose}
                 color="cyberpunk.accent"
                 _hover={{ color: "cyberpunk.text" }}
+                aria-label="Close"
               />
             </Dialog.CloseTrigger>
           </DialogContent>

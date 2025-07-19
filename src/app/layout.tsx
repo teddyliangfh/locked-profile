@@ -32,6 +32,7 @@ function NavigationLinks() {
         _focus={{ outline: "none", boxShadow: "none" }}
         _active={{ outline: "none", boxShadow: "none" }}
         transition="all 0.3s ease"
+        aria-current={pathname === "/" ? "page" : undefined}
       >
         Home
       </ChakraLink>
@@ -48,6 +49,7 @@ function NavigationLinks() {
         _focus={{ outline: "none", boxShadow: "none" }}
         _active={{ outline: "none", boxShadow: "none" }}
         transition="all 0.3s ease"
+        aria-current={pathname === "/ProfileList" ? "page" : undefined}
       >
         Profile List
       </ChakraLink>
