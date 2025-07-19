@@ -1,10 +1,20 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useCallback } from "react";
 
-// Hook: useUrlQueryState
-// - Returns { pageNumber, setQuery }
-// - pageNumber is always a number (default 1 if not in URL or invalid)
-// - setQuery({ pageNumber }) updates the URL (accepts string or number)
+
+/**
+ * Custom React hook for managing the `pageNumber` query parameter in the URL.
+ *
+ * - Reads the `pageNumber` from the URL's search parameters and returns it as a number.
+ *   Defaults to `1` if the parameter is missing, invalid, or less than 1.
+ * - Provides a `setQuery` function to update the `pageNumber` in the URL.
+ *   - If `pageNumber` is set to `1` or an empty string, the parameter is removed from the URL.
+ *   - Otherwise, the parameter is updated to the provided value.
+ *
+ * @returns An object containing:
+ *   - `pageNumber`: The current page number from the URL (number).
+ *   - `setQuery`: A function to update the `pageNumber` in the URL.
+ */
 export function useUrlQueryState() {
   const searchParams = useSearchParams();
   const router = useRouter();

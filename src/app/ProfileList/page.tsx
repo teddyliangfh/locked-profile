@@ -34,8 +34,8 @@ export default function ProfileListPage() {
             fontSize="lg"
             maxW="600px"
             color="transparent"
+            bg={"cyberpunk.gradientBluePurple"}
             style={{
-              background: "linear-gradient(81.02deg, rgb(250, 85, 96) -23.49%, rgb(177, 75, 244) 45.66%, rgb(77, 145, 255) 114.8%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               WebkitTextFillColor: "transparent"

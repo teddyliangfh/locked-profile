@@ -1,6 +1,17 @@
 import { useQuery } from '@apollo/client';
 import { GET_CHARACTERS } from '@/graphql/queries';
 
+/**
+ * Custom React hook to fetch a paginated list of characters using a GraphQL query.
+ *
+ * @param page - The current page number to fetch.
+ * @returns An object containing:
+ *   - `characters`: The array of character results for the current page.
+ *   - `loading`: Boolean indicating if the query is in progress.
+ *   - `error`: Any error encountered during the query.
+ *   - `currentPage`: The current page number.
+ *   - `totalCount`: The total number of available characters.
+ */
 export function useCharacters(page: number) {
   const { data, loading, error } = useQuery(GET_CHARACTERS, {
     variables: { page },
@@ -11,7 +22,6 @@ export function useCharacters(page: number) {
   const currentPage = page;
   const totalCount = info.count || 0;
 
-  // TODO: define data type in /types
   return {
     characters: data?.characters?.results || [],
     loading,

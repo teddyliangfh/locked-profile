@@ -82,8 +82,8 @@ export default function Home() {
           </Text>
           <Button
             fontWeight={500}
-            bg="linear-gradient(81.02deg, rgb(250, 85, 96) -23.47%, rgb(177, 75, 244) 45.52%, rgb(77, 145, 255) 114.8%)"
-            color="white"
+            bg={"cyberpunk.gradientBluePurple"}
+            color="cyberpunk.text"
             border="none"
             _hover={{
               filter: "brightness(1.1)",

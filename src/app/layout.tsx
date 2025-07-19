@@ -126,7 +126,7 @@ export default function RootLayout({
                 justifyContent="center"
               >
                 <Text fontSize="sm" color="cyberpunk.accent">
-                  challenge version v3.5
+                  Challenge version v3.5
                 </Text>
               </Box>
             </Box>

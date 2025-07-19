@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SimpleGrid, Box, Spinner, Text, ButtonGroup, IconButton, Stack, Pagination, HStack, VStack } from "@chakra-ui/react";
+import { SimpleGrid, Box, Spinner, Text, ButtonGroup, IconButton, Stack, Pagination, VStack } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/ColorMode";
 import { ProfileCard } from "./ProfileCard";
 import { ProfileCardModal } from "./ProfileCardModal";
@@ -16,6 +16,22 @@ interface ProfileListProps {
 }
 
 
+/**
+ * Renders a list of character profiles with pagination and modal details.
+ *
+ * Handles loading, error, and empty states. Displays a grid of `ProfileCard` components,
+ * and allows users to click on a card to view more details in a modal (`ProfileCardModal`).
+ * Includes pagination controls if there are multiple pages of results.
+ *
+ * @param characters - Array of character objects to display.
+ * @param loading - Boolean indicating if the data is currently loading.
+ * @param error - Error object or string if loading failed.
+ * @param totalCount - Total number of characters available (for pagination).
+ * @param page - Current page number (1-based).
+ * @param onPageChange - Callback function invoked when the page changes.
+ *
+ * @returns A React component displaying the character list, pagination, and modal.
+ */
 export function ProfileList({
   characters,
   loading,
@@ -96,9 +112,9 @@ export function ProfileList({
           mx="auto"
         >
           {characters.map((character) => (
-            <ProfileCard 
-              key={character.id} 
-              character={character} 
+            <ProfileCard
+              key={character.id}
+              character={character}
               onClick={() => handleCardClick(character)}
             />
           ))}
@@ -121,13 +137,13 @@ export function ProfileList({
                 justifyContent="center"
               >
                 <Pagination.PrevTrigger asChild>
-                  <IconButton 
+                  <IconButton
                     aria-label="Previous page"
                     // colorScheme="cyan"
                     variant="outline"
                     borderColor={borderColor}
                     color={textColor}
-                    _hover={{ 
+                    _hover={{
                       bg: hoverBg,
                       color: hoverColor,
                       boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
@@ -150,7 +166,7 @@ export function ProfileList({
                       borderColor={borderColor}
                       color={pageObj.value === page ? "white" : textColor}
                       bg={pageObj.value === page ? "cyan.500" : "transparent"}
-                      _hover={{ 
+                      _hover={{
                         bg: pageObj.value === page ? "cyan.600" : hoverBg,
                         color: pageObj.value === page ? "white" : hoverColor,
                         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
@@ -164,13 +180,13 @@ export function ProfileList({
                 />
 
                 <Pagination.NextTrigger asChild>
-                  <IconButton 
+                  <IconButton
                     aria-label="Next page"
                     colorScheme="cyan"
                     variant="outline"
                     borderColor={borderColor}
                     color={textColor}
-                    _hover={{ 
+                    _hover={{
                       bg: hoverBg,
                       color: hoverColor,
                       boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",

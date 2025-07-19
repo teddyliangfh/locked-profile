@@ -23,6 +23,23 @@ interface BlockingDialogProps {
   onClose?: () => void; // Optional close handler
 }
 
+/**
+ * A modal dialog component that prompts the user to enter a username and job title.
+ * 
+ * @param isOpen - Controls whether the dialog is open.
+ * @param onSave - Callback invoked with the entered username and job title when the user clicks "Save".
+ * @param onClose - Optional callback invoked when the dialog is closed or the user clicks "Cancel".
+ * 
+ * The dialog validates that both fields are filled before allowing submission.
+ * Displays an error message if validation fails.
+ * 
+ * @example
+ * <BlockingDialog
+ *   isOpen={isDialogOpen}
+ *   onSave={({ username, jobTitle }) => { ... }}
+ *   onClose={() => setDialogOpen(false)}
+ * />
+ */
 export function BlockingDialog({
   isOpen,
   onSave,

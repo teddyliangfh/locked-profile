@@ -17,7 +17,7 @@ const cyberpunkConfig = defineConfig({
           lime: { value: "#CFFF04" }, // lime
           cyan: { value: "#00F0FF" }, // cyan
           gradient: { value: "linear-gradient(90deg, #00FFC6 0%, #A259F7 50%, #FF4DDE 100%)" },
-          gradientBluePurple: { value: "linear-gradient(90deg, #3EECFB 0%, #A259F7 100%)" },
+          gradientBluePurple: { value: "linear-gradient(81.02deg, rgb(250, 85, 96) -23.49%, rgb(177, 75, 244) 45.66%, rgb(77, 145, 255) 114.8%)" },
         },
       },
       shadows: {

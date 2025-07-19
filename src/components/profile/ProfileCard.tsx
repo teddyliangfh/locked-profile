@@ -6,7 +6,19 @@ interface ProfileCardProps {
   onClick?: () => void;
 }
 
-// ProfileCard displays a single character's info
+
+/**
+ * Renders a stylized profile card displaying character information.
+ *
+ * @param character - The character object containing details such as name, image, status, species, and id.
+ * @param onClick - Callback function invoked when the card is clicked.
+ *
+ * The card includes:
+ * - A status badge indicating if the character is "Alive" or not.
+ * - An image with a hover effect and gradient overlay for readability.
+ * - Character name, species, and ID displayed with themed styling.
+ * - Interactive hover effects for visual feedback.
+ */
 export function ProfileCard({ character, onClick }: ProfileCardProps) {
   return (
     <Box
@@ -35,9 +47,9 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
         zIndex={2}
       >
         <Badge
-       bg={
-        character.status === "Alive" ? "green.300" : "red.300"
-      }
+          bg={
+            character.status === "Alive" ? "green.300" : "red.300"
+          }
           variant="solid"
           fontSize="xs"
           px={2}
@@ -52,11 +64,11 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
 
       {/* Image container */}
       <Box position="relative" overflow="hidden">
-        <Image 
-          src={character.image} 
-          alt={character.name} 
-          w="100%" 
-          h="200px" 
+        <Image
+          src={character.image}
+          alt={character.name}
+          w="100%"
+          h="200px"
           objectFit="cover"
           transition="transform 0.3s ease"
           _hover={{
@@ -79,16 +91,16 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
 
       {/* Content */}
       <VStack align="start" gap={2} p={4}>
-        <Text 
-          fontWeight="bold" 
-          fontSize="lg" 
+        <Text
+          fontWeight="bold"
+          fontSize="lg"
           color="cyberpunk.accent"
           w="100%"
           textShadow="0 0 5px rgba(34, 211, 238, 0.3)"
         >
           {character.name}
         </Text>
-        
+
         <HStack justify="space-between" w="100%" opacity={0.8}>
           <Text fontSize="sm" color="cyberpunk.textDim">
             Species

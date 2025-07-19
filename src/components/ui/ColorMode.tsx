@@ -71,12 +71,6 @@ export const ColorModeButton = React.forwardRef<
         }}
         transition="all 0.3s ease"
         {...props}
-        css={{
-          _icon: {
-            width: "5",
-            height: "5",
-          },
-        }}
       >
         <ColorModeIcon />
       </IconButton>

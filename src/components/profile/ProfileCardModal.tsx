@@ -23,6 +23,19 @@ interface ProfileCardModalProps {
   onClose: () => void;
 }
 
+/**
+ * Modal component that displays detailed information about a character profile.
+ *
+ * @param character - The character object containing profile information to display. If not provided, the modal will not render.
+ * @param isOpen - Boolean indicating whether the modal is open.
+ * @param onClose - Callback function invoked when the modal is requested to close.
+ *
+ * The modal includes:
+ * - Character image, name, ID, species, gender, and status.
+ * - Styled layout with cyberpunk theme.
+ * - Responsive design for different screen sizes.
+ * - Close button and backdrop handling.
+ */
 export function ProfileCardModal({
   character,
   isOpen,

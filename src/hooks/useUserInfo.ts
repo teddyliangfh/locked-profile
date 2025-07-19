@@ -7,6 +7,18 @@ export interface UserInfo {
 
 const STORAGE_KEY = "lockedview_userinfo";
 
+/**
+ * React hook for managing user information with localStorage persistence.
+ *
+ * - `userInfo` is `undefined` before loading, `null` if not found, or a `UserInfo` object if loaded.
+ * - Reads from localStorage on mount (browser only).
+ * - Provides methods to save or clear user info in both state and localStorage.
+ *
+ * @returns An object containing:
+ *   - `userInfo`: The current user info (`UserInfo | null | undefined`)
+ *   - `saveUserInfo`: Function to save user info to state and localStorage
+ *   - `clearUserInfo`: Function to clear user info from state and localStorage
+ */
 export function useUserInfo() {
   // userInfo is undefined before loading, null if not found, or an object if loaded
   const [userInfo, setUserInfo] = useState<UserInfo | null | undefined>(undefined);

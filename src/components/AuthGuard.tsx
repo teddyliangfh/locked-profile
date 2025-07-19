@@ -75,6 +75,12 @@ function AuthGuardInner({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * A React component that wraps its children with authentication and user info context providers.
+ * 
+ * @param children - The React nodes to be rendered within the authentication guard.
+ * @returns The children wrapped with `UserInfoProvider` and `AuthGuardInner` components.
+ */
 export function AuthGuard({ children }: { children: ReactNode }) {
   return (
     <UserInfoProvider>
