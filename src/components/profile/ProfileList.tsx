@@ -4,15 +4,7 @@ import { useColorModeValue } from "@/components/ui/ColorMode";
 import { ProfileCard } from "./ProfileCard";
 import { ProfileCardModal } from "./ProfileCardModal";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-
-// Define the character type for type safety
-export interface Character {
-  id: string;
-  name: string;
-  image: string;
-  species: string;
-  status: string;
-}
+import type { Character } from "@/types/character";
 
 interface ProfileListProps {
   characters: Character[];
@@ -70,9 +62,20 @@ export function ProfileList({
         <Stack align="center" gap={4}>
           <Text color="red.400" fontSize="lg">Failed to load profiles.</Text>
           <Text color={accentColor} fontSize="sm">
-            Please try refreshing the page.
+            {typeof error === "string" ? error : (error instanceof Error ? error.message : "Unknown error.")}
+          </Text>
+          <Text color={accentColor} fontSize="sm">
+            Please try refreshing the page or check your network connection.
           </Text>
         </Stack>
+      </Box>
+    );
+  }
+
+  if (!characters || characters.length === 0) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minH="400px">
+        <Text color={accentColor} fontSize="lg">No item found</Text>
       </Box>
     );
   }
@@ -110,11 +113,17 @@ export function ProfileList({
               pageSize={20}
               onPageChange={onPageChange ? (e) => onPageChange(e.page) : undefined}
             >
-              <ButtonGroup variant="ghost" size="md" gap={2}>
+              <ButtonGroup
+                variant="ghost"
+                size={{ base: "sm", md: "md" }}
+                gap={{ base: 1, md: 2 }}
+                flexWrap="wrap"
+                justifyContent="center"
+              >
                 <Pagination.PrevTrigger asChild>
                   <IconButton 
                     aria-label="Previous page"
-                    colorScheme="cyan"
+                    // colorScheme="cyan"
                     variant="outline"
                     borderColor={borderColor}
                     color={textColor}
@@ -136,7 +145,7 @@ export function ProfileList({
                       key={pageObj.value}
                       aria-label={`Page ${pageObj.value}`}
                       variant={pageObj.value === page ? "solid" : "outline"}
-                      colorScheme="cyan"
+                      // colorScheme="cyan"
                       size="md"
                       borderColor={borderColor}
                       color={pageObj.value === page ? "white" : textColor}

@@ -15,14 +15,7 @@ import {
   CloseButton,
   VStack,
 } from "@chakra-ui/react";
-
-interface Character {
-  id: string;
-  name: string;
-  image: string;
-  species: string;
-  status: string;
-}
+import type { Character } from "@/types/character";
 
 interface ProfileCardModalProps {
   character: Character | null;

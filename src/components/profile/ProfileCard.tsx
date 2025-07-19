@@ -1,13 +1,8 @@
 import { Box, Image, Text, VStack, Badge, HStack } from "@chakra-ui/react";
+import type { Character } from "@/types/character";
 
 interface ProfileCardProps {
-  character: {
-    id: string;
-    name: string;
-    image: string;
-    species: string;
-    status: string;
-  };
+  character: Character;
   onClick?: () => void;
 }
 
