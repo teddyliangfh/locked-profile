@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { AuthGuard } from "@/components/AuthGuard";
+import { ColorModeButton } from "@/components/ui/ColorMode";
 const HEADER_HEIGHT = "64px";
 const FOOTER_HEIGHT = "48px";
 
@@ -24,8 +25,8 @@ export default function RootLayout({
         <RootProvider>
           <AuthGuard>
             <Box minH="100vh" bg="gray.50">
-              {/* 固定 Header */}
-              <Box
+              {/* Header */}
+              <Flex
                 as="header"
                 position="fixed"
                 top={0}
@@ -35,13 +36,9 @@ export default function RootLayout({
                 bg="white"
                 boxShadow="sm"
                 zIndex={100}
-                display="flex"
                 alignItems="center"
                 px={6}
               >
-                <Text fontWeight="bold" mr={8}>
-                  LockedView Header
-                </Text>
                 <Flex as="nav" gap={4}>
                   <ChakraLink
                     as={Link}
@@ -60,9 +57,10 @@ export default function RootLayout({
                     ProfileList
                   </ChakraLink>
                 </Flex>
-              </Box>
+                <Box flex="1" />
+                <ColorModeButton />
+              </Flex>
 
-              {/* 主体内容区 */}
               <Box
                 as="main"
                 pt={HEADER_HEIGHT}
@@ -75,7 +73,7 @@ export default function RootLayout({
                 {children}
               </Box>
 
-              {/* 固定 Footer */}
+              {/* Footer */}
               <Box
                 as="footer"
                 position="fixed"
