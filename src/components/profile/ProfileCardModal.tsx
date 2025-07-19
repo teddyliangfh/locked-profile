@@ -23,7 +23,11 @@ interface ProfileCardModalProps {
   onClose: () => void;
 }
 
-export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModalProps) {
+export function ProfileCardModal({
+  character,
+  isOpen,
+  onClose,
+}: ProfileCardModalProps) {
   const handleOpenChange = (details: { open: boolean }) => {
     if (!details.open) onClose();
   };
@@ -31,12 +35,16 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
   if (!character) return null;
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={handleOpenChange} placement="center">
+    <Dialog.Root
+      open={isOpen}
+      onOpenChange={handleOpenChange}
+      placement="center"
+    >
       <Portal>
         <DialogBackdrop />
         <DialogPositioner>
-          <DialogContent 
-            maxW="100vw"
+          <DialogContent
+            maxW="640px"
             w="50vw"
             borderRadius="lg"
             overflow="hidden"
@@ -46,7 +54,7 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
             boxShadow="cyberpunk.shadowStrong"
             backdropFilter="blur(15px)"
           >
-            <DialogHeader bg="cyberpunk.headerBg" px={3} py={2}>
+            <DialogHeader bg="cyberpunk.headerBg" mt={6} px={2} py={2}>
               <Box w="100%" textAlign="center">
                 <DialogTitle
                   fontSize={{ base: "lg", md: "xl" }}
@@ -57,9 +65,16 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                 </DialogTitle>
               </Box>
             </DialogHeader>
-            
             <DialogBody p={{ base: 4, md: 8 }}>
-              <Box display={{ base: "block", md: "flex" }} gap={{ base: 4, md: 8 }} alignItems="center" w="100%" py={{ base: 2, md: 4 }}>
+              <Box
+                display={{ base: "block", md: "flex" }}
+                gap={{ base: 4, md: 8 }}
+                alignItems="center"
+                w="100%"
+                maxW="420px"
+                mx="auto"
+                py={{ base: 2, md: 4 }}
+              >
                 {/* image */}
                 <Box
                   flexShrink={0}
@@ -85,33 +100,78 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                   />
                 </Box>
                 {/* info */}
-                <VStack gap={2} p={{ base: 2, md: 4 }} align="stretch" flex={1} minW={0}>
+                <VStack
+                  gap={2}
+                  p={{ base: 2, md: 4 }}
+                  align="stretch"
+                  flex={1}
+                  minW={0}
+                >
                   <Box>
                     <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
                       Character ID
                     </Text>
-                    <Text fontSize="md" fontFamily="mono" fontWeight="semibold" color="cyberpunk.accent" truncate>
+                    <Text
+                      fontSize="md"
+                      fontFamily="mono"
+                      fontWeight="semibold"
+                      color="cyberpunk.accent"
+                      truncate
+                    >
                       #{character.id}
                     </Text>
                   </Box>
-                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={2} />
+                  <Box
+                    borderTop="1px"
+                    borderColor="cyberpunk.borderDark"
+                    pt={2}
+                  />
                   <Box>
                     <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
                       Species:
                     </Text>
-                    <Text fontSize="md" fontWeight="medium" color="cyberpunk.textDim" truncate>
+                    <Text
+                      fontSize="md"
+                      fontWeight="medium"
+                      color="cyberpunk.textDim"
+                      truncate
+                    >
                       {character.species}
                     </Text>
                   </Box>
-                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={2} />
+                  <Box
+                    borderTop="1px"
+                    borderColor="cyberpunk.borderDark"
+                    pt={2}
+                  />
+                  <Box>
+                    <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
+                      Gender:
+                    </Text>
+                    <Text
+                      fontSize="md"
+                      fontWeight="medium"
+                      color="cyberpunk.textDim"
+                      truncate
+                    >
+                      {character.gender}
+                    </Text>
+                  </Box>
+                  <Box
+                    borderTop="1px"
+                    borderColor="cyberpunk.borderDark"
+                    pt={2}
+                  />
                   <Box>
                     <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
                       Status:
                     </Text>
                     <HStack>
                       <Badge
-                        colorScheme={character.status === "Alive" ? "green" : "red"}
-                        variant="subtle"
+                        bg={
+                          character.status === "Alive" ? "green.400" : "red.400"
+                        }
+                        color="white"
                         fontSize="sm"
                         px={2}
                         py={0.5}
@@ -125,11 +185,15 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
               </Box>
             </DialogBody>
             <Dialog.CloseTrigger asChild>
-              <CloseButton size="sm" color="cyberpunk.accent" _hover={{ color: "cyberpunk.text" }} />
+              <CloseButton
+                size="sm"
+                color="cyberpunk.accent"
+                _hover={{ color: "cyberpunk.text" }}
+              />
             </Dialog.CloseTrigger>
           </DialogContent>
         </DialogPositioner>
       </Portal>
     </Dialog.Root>
   );
-} 
+}

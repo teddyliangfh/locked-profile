@@ -35,7 +35,9 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
         zIndex={2}
       >
         <Badge
-          colorScheme={character.status === "Alive" ? "green" : "red"}
+       bg={
+        character.status === "Alive" ? "green.300" : "red.300"
+      }
           variant="solid"
           fontSize="xs"
           px={2}

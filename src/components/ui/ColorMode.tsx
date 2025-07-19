@@ -61,9 +61,8 @@ export const ColorModeButton = React.forwardRef<
         variant="outline"
         aria-label="Toggle color mode"
         aria-pressed={colorMode === "dark"}
-        size="sm"
+        size="xs"
         ref={ref}
-        colorScheme="cyan"
         borderColor="cyberpunk.border"
         color="cyberpunk.accent"
         _hover={{
