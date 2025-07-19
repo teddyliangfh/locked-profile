@@ -1,35 +1,32 @@
-import { defineConfig } from "@chakra-ui/react";
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
-export const cyberpunkTokens =
-  defineConfig({
-    theme: {
-      tokens: {
-        colors: {
-          cyberpunk: {
-            bg: { value: "#0f172a" },
-            cardBg: { value: "rgba(17,24,39,0.8)" },
-            modalBg: { value: "rgba(17,24,39,0.95)" },
-            headerBg: { value: "rgba(17,24,39,0.95)" },
-            accent: { value: "#22d3ee" },
-            accentPink: { value: "#f472b6" },
-            accentPurple: { value: "#a78bfa" },
-            border: { value: "#22d3ee" },
-            borderDark: { value: "#0891b2" },
-            text: { value: "#e0f2fe" },
-            textDim: { value: "#67e8f9" },
-          },
-        },
-        shadows: {
-          neon: { value: "0 0 20px #22d3ee, 0 0 40px #a78bfa" },
-          neonSoft: { value: "0 0 20px rgba(34, 211, 238, 0.3)" },
-          neonStrong: { value: "0 0 30px rgba(34, 211, 238, 0.4)" },
-        },
-        gradients: {
-          cyberpunk: {
-            gradient: { value: "linear(to-b, gray.900, blue.900)" },
-            gradientText: { value: "linear(to-r, cyan.400, blue.400, purple.400)" },
-          },
+const cyberpunkConfig = defineConfig({
+  theme: {
+    tokens: {
+      colors: {
+        cyberpunk: {
+          bg: { value: "#0A0F1C" }, // dark navy
+          cardBg: { value: "#232946" }, // dark gray blue
+          accent: { value: "#00FFC6" }, // mint green
+          accentPurple: { value: "#A259F7" }, // neon purple
+          accentPink: { value: "#FF4DDE" }, // bright pink
+          accentBlue: { value: "#3EECFB" }, // bright blue
+          border: { value: "#00FFC6" }, // mint green
+          text: { value: "#E0F2FE" }, // light text
+          textDim: { value: "#A3BFFA" }, // secondary text
+          lime: { value: "#CFFF04" }, // lime
+          cyan: { value: "#00F0FF" }, // cyan
+          gradient: { value: "linear-gradient(90deg, #00FFC6 0%, #A259F7 50%, #FF4DDE 100%)" },
+          gradientBluePurple: { value: "linear-gradient(90deg, #3EECFB 0%, #A259F7 100%)" },
         },
       },
+      shadows: {
+        neon: { value: "0 0 20px #00FFC6, 0 0 40px #A259F7" },
+        neonSoft: { value: "0 0 20px rgba(0,255,198,0.3)" },
+        neonStrong: { value: "0 0 30px rgba(162,89,247,0.4)" },
+      },
     },
-  }).theme?.tokens ?? {};
+  },
+});
+
+export const cyberpunkSystem = createSystem(defaultConfig, cyberpunkConfig);

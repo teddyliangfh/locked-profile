@@ -11,7 +11,7 @@ export function useCharacters(page: number) {
   const currentPage = page;
   const totalCount = info.count || 0;
 
- //todo define data type in /types
+  // TODO: define data type in /types
   return {
     characters: data?.characters?.results || [],
     loading,

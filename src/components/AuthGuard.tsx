@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode, useState, useEffect } from "react";
 import { useUserInfoContext, UserInfoProvider } from "@/providers/UserInfoProvider";
-import { BlockingDialog } from "@/components/ui/BlockingDialog";
+import { BlockingDialog } from "@/components/BlockingDialog";
 
 function AuthGuardInner({ children }: { children: ReactNode }) {
   const { userInfo, saveUserInfo } = useUserInfoContext();

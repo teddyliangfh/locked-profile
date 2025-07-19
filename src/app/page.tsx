@@ -2,7 +2,7 @@
 import { Button, Text, Stack, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { useUserInfoContext } from "@/providers/UserInfoProvider";
-import { BlockingDialog } from "@/components/ui/BlockingDialog";
+import { BlockingDialog } from "@/components/BlockingDialog";
 
 export default function Home() {
   // Get user info and update function from context
@@ -29,26 +29,14 @@ export default function Home() {
       justifyContent="center"
       bg="transparent"
     >
-      <Box
-        bg="cyberpunk.cardBg"
-        backdropFilter="blur(10px)"
-        borderRadius="xl"
-        border="1px"
-        borderColor="cyberpunk.border"
-        boxShadow="cyberpunk.shadowStrong"
-        p={8}
-        maxW="500px"
-        w="100%"
-        mx={4}
-      >
+
         <Stack mb={6} gap={4} alignItems="center">
           <Text 
             fontWeight="bold" 
             fontSize="2xl"
             color="cyberpunk.accent" 
-            textShadow="0 0 10px rgba(34, 211, 238, 0.5)"
           >
-            Welcome: {userInfo?.username}
+            Welcome, {userInfo?.username}
           </Text>
           <Text 
             fontSize="lg"
@@ -73,7 +61,7 @@ export default function Home() {
             Update User Information
           </Button>
         </Stack>
-      </Box>
+   
       {/* Dialog for updating user info, only shown when showDialog is true */}
       <BlockingDialog
         isOpen={showDialog}

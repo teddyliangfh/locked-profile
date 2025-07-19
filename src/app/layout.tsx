@@ -4,7 +4,6 @@ import { RootProvider } from "./RootProvider";
 import {
   Box,
   Flex,
-  Container,
   Text,
   Link as ChakraLink,
 } from "@chakra-ui/react";
@@ -72,7 +71,7 @@ export default function RootLayout({
                     }}
                     transition="all 0.3s ease"
                   >
-                    ProfileList
+                    Profile List
                   </ChakraLink>
                 </Flex>
                 <Box flex="1" />

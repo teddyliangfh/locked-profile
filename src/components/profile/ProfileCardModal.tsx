@@ -2,7 +2,6 @@ import {
   Dialog,
   Portal,
   DialogBody,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogContent,
@@ -33,16 +32,21 @@ interface ProfileCardModalProps {
 }
 
 export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModalProps) {
+  const handleOpenChange = (details: { open: boolean }) => {
+    if (!details.open) onClose();
+  };
+
   if (!character) return null;
 
   return (
-    <Dialog.Root open={isOpen}>
+    <Dialog.Root open={isOpen} onOpenChange={handleOpenChange} placement="center">
       <Portal>
         <DialogBackdrop />
         <DialogPositioner>
           <DialogContent 
-            maxW="500px" 
-            borderRadius="xl" 
+            maxW="100vw"
+            w="50vw"
+            borderRadius="lg"
             overflow="hidden"
             bg="cyberpunk.modalBg"
             border="2px"
@@ -50,29 +54,36 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
             boxShadow="cyberpunk.shadowStrong"
             backdropFilter="blur(15px)"
           >
-            <DialogHeader bg="cyberpunk.headerBg" p={6}>
-              <HStack justify="space-between" align="center">
-                <DialogTitle 
-                  fontSize="2xl" 
-                  fontWeight="bold" 
-                  color="cyberpunk.accent" 
-                  textShadow="0 0 10px rgba(34, 211, 238, 0.5)"
+            <DialogHeader bg="cyberpunk.headerBg" px={3} py={2}>
+              <Box w="100%" textAlign="center">
+                <DialogTitle
+                  fontSize={{ base: "lg", md: "xl" }}
+                  fontWeight="bold"
+                  color="cyberpunk.accent"
                 >
                   {character.name}
                 </DialogTitle>
-                <CloseButton 
-                  size="lg" 
-                  onClick={onClose}
-                  color="cyberpunk.accent"
-                  _hover={{ color: "cyberpunk.text" }}
-                />
-              </HStack>
+              </Box>
             </DialogHeader>
             
-            <DialogBody p={0}>
-              <Stack gap={0}>
-                {/* Hero Image */}
-                <Box position="relative" h="300px" overflow="hidden">
+            <DialogBody p={{ base: 4, md: 8 }}>
+              <Box display={{ base: "block", md: "flex" }} gap={{ base: 4, md: 8 }} alignItems="center" w="100%" py={{ base: 2, md: 4 }}>
+                {/* 左侧照片 */}
+                <Box
+                  flexShrink={0}
+                  w={{ base: "100%", md: "200px" }}
+                  h={{ base: "120px", md: "200px" }}
+                  mx={{ base: "auto", md: 0 }}
+                  mb={{ base: 4, md: 0 }}
+                  overflow="hidden"
+                  borderRadius="lg"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  bg="gray.900"
+                  p={{ base: 1, md: 2 }}
+                  boxShadow="md"
+                >
                   <Image
                     src={character.image}
                     alt={character.name}
@@ -80,73 +91,50 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                     h="100%"
                     objectFit="cover"
                   />
-                  {/* Status badge overlay */}
-                  <Box
-                    position="absolute"
-                    top={4}
-                    right={4}
-                  >
-                    <Badge
-                      colorScheme={character.status === "Alive" ? "green" : "red"}
-                      variant="solid"
-                      fontSize="md"
-                      px={4}
-                      py={2}
-                      borderRadius="full"
-                      boxShadow="0 0 15px rgba(0, 0, 0, 0.7)"
-                    >
-                      {character.status}
-                    </Badge>
-                  </Box>
                 </Box>
-
-                {/* Character Details */}
-                <VStack gap={4} p={6} align="stretch">
+                {/* 右侧信息 */}
+                <VStack gap={2} p={{ base: 2, md: 4 }} align="stretch" flex={1} minW={0}>
                   <Box>
-                    <Text fontSize="sm" color="cyberpunk.accent" mb={1}>
+                    <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
                       Character ID
                     </Text>
-                    <Text fontSize="lg" fontFamily="mono" fontWeight="semibold" color="cyberpunk.accent">
+                    <Text fontSize="md" fontFamily="mono" fontWeight="semibold" color="cyberpunk.accent" truncate>
                       #{character.id}
                     </Text>
                   </Box>
-
-                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={4} />
-
+                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={2} />
                   <Box>
-                    <Text fontSize="sm" color="cyberpunk.accent" mb={1}>
-                      Species
+                    <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
+                      Species:
                     </Text>
-                    <Text fontSize="lg" fontWeight="medium" color="cyberpunk.textDim">
+                    <Text fontSize="md" fontWeight="medium" color="cyberpunk.textDim" truncate>
                       {character.species}
                     </Text>
                   </Box>
-
-                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={4} />
-
+                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={2} />
                   <Box>
-                    <Text fontSize="sm" color="cyberpunk.accent" mb={1}>
-                      Status
+                    <Text fontSize="xs" color="cyberpunk.accent" mb={0}>
+                      Status:
                     </Text>
                     <HStack>
                       <Badge
                         colorScheme={character.status === "Alive" ? "green" : "red"}
                         variant="subtle"
-                        fontSize="md"
-                        px={3}
-                        py={1}
+                        fontSize="sm"
+                        px={2}
+                        py={0.5}
                         borderRadius="md"
                       >
                         {character.status}
                       </Badge>
-                      <Text fontSize="sm" color="cyberpunk.accent">
-                        {character.status === "Alive" ? "Currently living" : "No longer with us"}
-                      </Text>
                     </HStack>
                   </Box>
                 </VStack>
-              </Stack>
+              </Box>
             </DialogBody>
+            <Dialog.CloseTrigger asChild>
+              <CloseButton size="sm" color="cyberpunk.accent" _hover={{ color: "cyberpunk.text" }} />
+            </Dialog.CloseTrigger>
           </DialogContent>
         </DialogPositioner>
       </Portal>

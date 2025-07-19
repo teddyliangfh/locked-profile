@@ -15,21 +15,19 @@ interface ProfileCardProps {
 export function ProfileCard({ character, onClick }: ProfileCardProps) {
   return (
     <Box
-      borderWidth="2px"
+      borderWidth="0"
       borderRadius="xl"
       overflow="hidden"
       boxShadow="cyberpunk.shadowSoft"
       bg="cyberpunk.cardBg"
-      borderColor="cyberpunk.border"
       maxW="280px"
       w="100%"
       cursor="pointer"
       onClick={onClick}
       transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
       _hover={{
+        boxShadow: "0 0 0 2px #00FFC6, 0 0 16px 2px #00FFC6",
         transform: "translateY(-4px)",
-        boxShadow: "cyberpunk.shadowStrong",
-        borderColor: "cyberpunk.accent",
       }}
       position="relative"
       backdropFilter="blur(10px)"

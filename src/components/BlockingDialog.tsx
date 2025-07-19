@@ -6,7 +6,6 @@ import {
   Field,
   Fieldset,
   Input,
-  Stack,
   DialogBody,
   DialogFooter,
   DialogHeader,
@@ -14,7 +13,6 @@ import {
   DialogContent,
   DialogBackdrop,
   DialogPositioner,
-  IconButton,
   CloseButton,
   Text,
 } from "@chakra-ui/react";
@@ -47,14 +45,13 @@ export function BlockingDialog({
     setUsername("");
     setJobTitle("");
     setError("");
-    console.log(onClose)
     if (onClose) {
       onClose();
     }
   };
 
   return (
-    <Dialog.Root open={isOpen}>
+    <Dialog.Root open={isOpen} placement="center">
       <Portal>
         <DialogBackdrop />
         <DialogPositioner>
@@ -67,87 +64,98 @@ export function BlockingDialog({
             borderRadius="xl"
           >
             {/* Header with title */}
-            <DialogHeader bg="cyberpunk.headerBg">
-              <DialogTitle 
-                color="cyberpunk.accent" 
-                textShadow="0 0 10px rgba(34, 211, 238, 0.5)"
-              >
-                Please enter Your Info
+            <DialogHeader
+              bg={{ base: "formbodyBg", _dark: "formbodyBgDark" }}
+              px={{ base: 3, md: 5 }}
+              py={{ base: 2, md: 3 }}
+            >
+              <DialogTitle color="cyberpunk.accent">
+                Please enter your info
               </DialogTitle>
             </DialogHeader>
             {/* Body with form fields */}
-            <DialogBody bg="cyberpunk.cardBg">
+            <DialogBody
+              bg={{ base: "formbodyBg", _dark: "formbodyBgDark" }}
+              px={{ base: 3, md: 5 }}
+              py={{ base: 3, md: 4 }}
+            >
               <Fieldset.Root>
                 <Fieldset.Content>
-                  <Field.Root>
-                    <Field.Label color="cyberpunk.accent">Username</Field.Label>
+                  <Field.Root mb={{ base: 3, md: 4 }}>
+                    <Field.Label fontSize="sm" mb={1}>
+                      Username
+                    </Field.Label>
                     <Input
                       value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      onChange={(e) => {
+                        setUsername(e.target.value);
+                        if (error) setError("");
+                      }}
                       autoFocus
-                      bg="cyberpunk.bg"
-                      borderColor="cyberpunk.borderDark"
-                      _focus={{ borderColor: "cyberpunk.accent", boxShadow: "cyberpunk.shadowSoft" }}
-                      color="cyberpunk.text"
-                      _placeholder={{ color: "cyberpunk.borderDark" }}
+                      size="sm"
                     />
                   </Field.Root>
-                  <Field.Root>
-                    <Field.Label color="cyberpunk.accent">Job Title</Field.Label>
+                  <Field.Root mb={{ base: 3, md: 4 }}>
+                    <Field.Label fontSize="sm" mb={1}>
+                      Job Title
+                    </Field.Label>
                     <Input
                       value={jobTitle}
-                      onChange={(e) => setJobTitle(e.target.value)}
-                      bg="cyberpunk.bg"
-                      borderColor="cyberpunk.borderDark"
-                      _focus={{ borderColor: "cyberpunk.accent", boxShadow: "cyberpunk.shadowSoft" }}
-                      color="cyberpunk.text"
-                      _placeholder={{ color: "cyberpunk.borderDark" }}
+                      onChange={(e) => {
+                        setJobTitle(e.target.value);
+                        if (error) setError("");
+                      }}
+                      size="sm"
                     />
                   </Field.Root>
                 </Fieldset.Content>
               </Fieldset.Root>
-              {error && <Text color="red.400" fontSize="sm" mt={2}>{error}</Text>}
+              {error && (
+                <Text color="red" fontSize="sm" mt={2}>
+                  {error}
+                </Text>
+              )}
             </DialogBody>
             {/* Footer with Save and optional Cancel buttons */}
-            <DialogFooter bg="cyberpunk.headerBg">
-            {onClose && (
-              <Dialog.ActionTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    onClick={onClose}
+            <DialogFooter
+              bg={{ base: "formbodyBg", _dark: "formbodyBgDark" }}
+              px={{ base: 3, md: 5 }}
+              py={{ base: 3, md: 4 }}
+              display="flex"
+              justifyContent="center"
+              gap={{ base: 2, md: 4 }}
+              mt={{ base: 2, md: 3 }}
+            >
+              {onClose && (
+                <Dialog.ActionTrigger asChild>
+                  <Button
+                    variant="outline"
+                    onClick={handleClose}
                     colorScheme="cyan"
                     borderColor="cyberpunk.border"
                     color="cyberpunk.accent"
-                    _hover={{ 
-                      bg: "cyan.500",
-                      color: "gray.900",
-                      boxShadow: "cyberpunk.shadowStrong"
-                    }}
-                    transition="all 0.3s ease"
                   >
                     Cancel
                   </Button>
                 </Dialog.ActionTrigger>
               )}
-              <Button 
-                colorScheme="cyan" 
-                onClick={handleSubmit}
-                bg="cyan.500"
-                color="gray.900"
-                _hover={{ 
-                  bg: "cyan.400",
-                  boxShadow: "cyberpunk.shadowStrong",
-                  transform: "translateY(-1px)"
-                }}
-                transition="all 0.3s ease"
-              >
-                Save
-              </Button>
-            
+              <Dialog.ActionTrigger asChild>
+                <Button
+                  variant="outline"
+                  colorScheme="cyan"
+                  onClick={handleSubmit}
+                  bg="cyberpunk.gradient"
+                  _hover={{
+                    transform: "translateY(-1px)",
+                  }}
+                >
+                  Save
+                </Button>
+              </Dialog.ActionTrigger>
             </DialogFooter>
             <Dialog.CloseTrigger asChild>
-              <CloseButton 
-                size="sm" 
+              <CloseButton
+                size="sm"
                 onClick={handleClose}
                 color="cyberpunk.accent"
                 _hover={{ color: "cyberpunk.text" }}

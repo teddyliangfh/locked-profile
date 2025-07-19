@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "pnpm store prune && rm -rf .next node_modules pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",
