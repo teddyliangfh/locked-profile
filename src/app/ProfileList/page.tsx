@@ -15,8 +15,8 @@ export default function ProfileListPage() {
     return (
       <Center minH="100vh">
         <Box textAlign="center">
-          <Spinner size="xl" color="teal.500" mb={4} />
-          <Text color="gray.600" _dark={{ color: "gray.300" }} fontSize="lg">
+          <Spinner size="xl" color="cyan.400" mb={4} />
+          <Text color="cyan.300" _dark={{ color: "cyan.300" }} fontSize="lg">
             Loading character profiles...
           </Text>
         </Box>
@@ -29,22 +29,14 @@ export default function ProfileListPage() {
       <Box py={8} px={4}>
         {/* Header Section */}
         <Box mb={8} textAlign="center">
-          <Heading 
-            as="h1" 
-            size="2xl" 
-            mb={2}
-            bgGradient="linear(to-r, teal.400, blue.500)"
-            bgClip="text"
-            fontWeight="bold"
-          >
-            Character Profiles
-          </Heading>
+
           <Text 
-            color="gray.600" 
-            _dark={{ color: "gray.300" }} 
+            color="cyan.200" 
+            _dark={{ color: "cyan.200" }} 
             fontSize="lg"
             maxW="600px"
             mx="auto"
+            textShadow="0 0 10px rgba(34, 211, 238, 0.3)"
           >
             Explore the diverse cast of characters from the Rick and Morty universe
           </Text>

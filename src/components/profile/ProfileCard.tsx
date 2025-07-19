@@ -15,12 +15,13 @@ interface ProfileCardProps {
 export function ProfileCard({ character, onClick }: ProfileCardProps) {
   return (
     <Box
-      borderWidth="1px"
+      borderWidth="2px"
       borderRadius="xl"
       overflow="hidden"
-      boxShadow="sm"
-      bg="white"
-      _dark={{ bg: "gray.800", borderColor: "gray.700" }}
+      boxShadow="0 0 20px rgba(34, 211, 238, 0.2)"
+      bg="rgba(17, 24, 39, 0.8)"
+      _dark={{ bg: "rgba(17, 24, 39, 0.8)", borderColor: "cyan.400" }}
+      borderColor="cyan.400"
       maxW="280px"
       w="100%"
       cursor="pointer"
@@ -28,10 +29,11 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
       transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
       _hover={{
         transform: "translateY(-4px)",
-        boxShadow: "xl",
-        borderColor: "teal.300",
+        boxShadow: "0 0 30px rgba(34, 211, 238, 0.4)",
+        borderColor: "cyan.300",
       }}
       position="relative"
+      backdropFilter="blur(10px)"
     >
       {/* Status badge overlay */}
       <Box
@@ -48,6 +50,7 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
           py={1}
           borderRadius="full"
           opacity={0.9}
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.5)"
         >
           {character.status}
         </Badge>
@@ -73,7 +76,7 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
           left={0}
           right={0}
           height="60px"
-          background="linear-gradient(transparent, rgba(0,0,0,0.7))"
+          background="linear-gradient(transparent, rgba(17, 24, 39, 0.8))"
           opacity={0}
           _hover={{ opacity: 1 }}
           transition="opacity 0.3s ease"
@@ -85,27 +88,28 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
         <Text 
           fontWeight="bold" 
           fontSize="lg" 
-          color="gray.800"
-          _dark={{ color: "white" }}
+          color="cyan.300"
+          _dark={{ color: "cyan.300" }}
           w="100%"
+          textShadow="0 0 5px rgba(34, 211, 238, 0.3)"
         >
           {character.name}
         </Text>
         
         <HStack justify="space-between" w="100%" opacity={0.8}>
-          <Text fontSize="sm" color="gray.600" _dark={{ color: "gray.300" }}>
+          <Text fontSize="sm" color="cyan.200" _dark={{ color: "cyan.200" }}>
             Species
           </Text>
-          <Text fontSize="sm" fontWeight="medium" color="gray.800" _dark={{ color: "white" }}>
+          <Text fontSize="sm" fontWeight="medium" color="cyan.100" _dark={{ color: "cyan.100" }}>
             {character.species}
           </Text>
         </HStack>
 
         <HStack justify="space-between" w="100%" opacity={0.8}>
-          <Text fontSize="sm" color="gray.600" _dark={{ color: "gray.300" }}>
+          <Text fontSize="sm" color="cyan.200" _dark={{ color: "cyan.200" }}>
             ID
           </Text>
-          <Text fontSize="xs" color="gray.500" _dark={{ color: "gray.400" }} fontFamily="mono">
+          <Text fontSize="xs" color="cyan.400" _dark={{ color: "cyan.400" }} fontFamily="mono">
             #{character.id}
           </Text>
         </HStack>
