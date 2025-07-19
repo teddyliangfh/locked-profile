@@ -1,5 +1,7 @@
-import { Box, Image, Text, VStack, Badge, HStack } from "@chakra-ui/react";
+import { Box,Text, VStack, Badge, HStack, Skeleton } from "@chakra-ui/react";
 import type { Character } from "@/types/character";
+import NextImage from "next/image";
+import { useState } from "react";
 
 interface ProfileCardProps {
   character: Character;
@@ -20,6 +22,8 @@ interface ProfileCardProps {
  * - Interactive hover effects for visual feedback.
  */
 export function ProfileCard({ character, onClick }: ProfileCardProps) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <Box
       borderWidth="0"
@@ -63,18 +67,22 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
       </Box>
 
       {/* Image container */}
-      <Box position="relative" overflow="hidden">
-        <Image
-          src={character.image}
-          alt={character.name}
-          w="100%"
-          h="200px"
-          objectFit="cover"
-          transition="transform 0.3s ease"
-          _hover={{
-            transform: "scale(1.05)"
-          }}
-        />
+      <Box position="relative" overflow="hidden" w="100%" h="200px">
+        {/* TODO optimize big image loading */}
+        <Skeleton loading={!loaded} w="100%" h="200px">
+          <NextImage
+            src={character.image}
+            alt={character.name}
+            width={280}
+            height={200}
+            style={{ objectFit: "cover", width: "100%", height: "200px" }}
+            sizes="(max-width: 280px) 100vw, 280px"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL="/placeholder.png"
+            onLoad={() => setLoaded(true)}
+          />
+        </Skeleton>
         {/* Gradient overlay for better text readability */}
         <Box
           position="absolute"
