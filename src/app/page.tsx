@@ -18,20 +18,24 @@ export default function Home() {
 
   return (
     <Box
+      position="fixed"
+      top={0}
+      left={0}
+      width="100vw"
+      height="100vh"
       display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      minHeight="100vh"
       bg="transparent"
     >
       <Box
-        bg="rgba(17, 24, 39, 0.8)"
+        bg="cyberpunk.cardBg"
         backdropFilter="blur(10px)"
         borderRadius="xl"
         border="1px"
-        borderColor="cyan.400"
-        boxShadow="0 0 30px rgba(34, 211, 238, 0.3)"
+        borderColor="cyberpunk.border"
+        boxShadow="cyberpunk.shadowStrong"
         p={8}
         maxW="500px"
         w="100%"
@@ -41,33 +45,30 @@ export default function Home() {
           <Text 
             fontWeight="bold" 
             fontSize="2xl"
-            color="cyan.300" 
-            _dark={{ color: "cyan.300" }}
+            color="cyberpunk.accent" 
             textShadow="0 0 10px rgba(34, 211, 238, 0.5)"
           >
             Welcome: {userInfo?.username}
           </Text>
           <Text 
             fontSize="lg"
-            color="cyan.200" 
-            _dark={{ color: "cyan.200" }}
+            color="cyberpunk.textDim" 
           >
             Job Title: {userInfo?.jobTitle}
           </Text>
-          <Button 
-            colorScheme="cyan" 
-            variant="outline"
-            size="lg"
-            onClick={() => setShowDialog(true)}
+          <Button
+            fontWeight={500}
+            bg="linear-gradient(81.02deg, rgb(250, 85, 96) -23.47%, rgb(177, 75, 244) 45.52%, rgb(77, 145, 255) 114.8%)"
+            color="white"
+            border="none"
             _hover={{
-              bg: "cyan.500",
-              color: "gray.900",
-              boxShadow: "0 0 20px rgba(34, 211, 238, 0.6)",
-              transform: "translateY(-2px)"
+              filter: "brightness(1.1)",
+              boxShadow: "0 0 16px 2px rgba(177,75,244,0.4)"
             }}
             transition="all 0.3s ease"
-            borderWidth="2px"
-            borderColor="cyan.400"
+            borderRadius="md"
+            size="lg"
+            onClick={() => setShowDialog(true)}
           >
             Update User Information
           </Button>

@@ -44,20 +44,18 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
             maxW="500px" 
             borderRadius="xl" 
             overflow="hidden"
-            bg="rgba(17, 24, 39, 0.95)"
-            _dark={{ bg: "rgba(17, 24, 39, 0.95)" }}
+            bg="cyberpunk.modalBg"
             border="2px"
-            borderColor="cyan.400"
-            boxShadow="0 0 30px rgba(34, 211, 238, 0.4)"
+            borderColor="cyberpunk.border"
+            boxShadow="cyberpunk.shadowStrong"
             backdropFilter="blur(15px)"
           >
-            <DialogHeader bg="rgba(17, 24, 39, 0.9)" _dark={{ bg: "rgba(17, 24, 39, 0.9)" }} p={6}>
+            <DialogHeader bg="cyberpunk.headerBg" p={6}>
               <HStack justify="space-between" align="center">
                 <DialogTitle 
                   fontSize="2xl" 
                   fontWeight="bold" 
-                  color="cyan.300" 
-                  _dark={{ color: "cyan.300" }}
+                  color="cyberpunk.accent" 
                   textShadow="0 0 10px rgba(34, 211, 238, 0.5)"
                 >
                   {character.name}
@@ -65,8 +63,8 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                 <CloseButton 
                   size="lg" 
                   onClick={onClose}
-                  color="cyan.400"
-                  _hover={{ color: "cyan.200" }}
+                  color="cyberpunk.accent"
+                  _hover={{ color: "cyberpunk.text" }}
                 />
               </HStack>
             </DialogHeader>
@@ -105,29 +103,29 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                 {/* Character Details */}
                 <VStack gap={4} p={6} align="stretch">
                   <Box>
-                    <Text fontSize="sm" color="cyan.400" _dark={{ color: "cyan.400" }} mb={1}>
+                    <Text fontSize="sm" color="cyberpunk.accent" mb={1}>
                       Character ID
                     </Text>
-                    <Text fontSize="lg" fontFamily="mono" fontWeight="semibold" color="cyan.300" _dark={{ color: "cyan.300" }}>
+                    <Text fontSize="lg" fontFamily="mono" fontWeight="semibold" color="cyberpunk.accent">
                       #{character.id}
                     </Text>
                   </Box>
 
-                  <Box borderTop="1px" borderColor="cyan.600" _dark={{ borderColor: "cyan.600" }} pt={4} />
+                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={4} />
 
                   <Box>
-                    <Text fontSize="sm" color="cyan.400" _dark={{ color: "cyan.400" }} mb={1}>
+                    <Text fontSize="sm" color="cyberpunk.accent" mb={1}>
                       Species
                     </Text>
-                    <Text fontSize="lg" fontWeight="medium" color="cyan.200" _dark={{ color: "cyan.200" }}>
+                    <Text fontSize="lg" fontWeight="medium" color="cyberpunk.textDim">
                       {character.species}
                     </Text>
                   </Box>
 
-                  <Box borderTop="1px" borderColor="cyan.600" _dark={{ borderColor: "cyan.600" }} pt={4} />
+                  <Box borderTop="1px" borderColor="cyberpunk.borderDark" pt={4} />
 
                   <Box>
-                    <Text fontSize="sm" color="cyan.400" _dark={{ color: "cyan.400" }} mb={1}>
+                    <Text fontSize="sm" color="cyberpunk.accent" mb={1}>
                       Status
                     </Text>
                     <HStack>
@@ -141,7 +139,7 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                       >
                         {character.status}
                       </Badge>
-                      <Text fontSize="sm" color="cyan.300" _dark={{ color: "cyan.300" }}>
+                      <Text fontSize="sm" color="cyberpunk.accent">
                         {character.status === "Alive" ? "Currently living" : "No longer with us"}
                       </Text>
                     </HStack>
@@ -149,12 +147,6 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                 </VStack>
               </Stack>
             </DialogBody>
-            
-            <DialogFooter bg="rgba(17, 24, 39, 0.9)" _dark={{ bg: "rgba(17, 24, 39, 0.9)" }} p={4}>
-              <Text fontSize="sm" color="cyan.400" _dark={{ color: "cyan.400" }}>
-                Click outside or press ESC to close
-              </Text>
-            </DialogFooter>
           </DialogContent>
         </DialogPositioner>
       </Portal>

@@ -26,8 +26,7 @@ export default function RootLayout({
           <AuthGuard>
             <Box 
               minH="100vh" 
-              bgGradient="linear(to-b, gray.900, blue.900)"
-              _dark={{ bgGradient: "linear(to-b, gray.900, blue.900)" }}
+              bgGradient="cyberpunk.gradient"
             >
               {/* Header */}
               <Flex
@@ -37,12 +36,11 @@ export default function RootLayout({
                 left={0}
                 width="100%"
                 height={HEADER_HEIGHT}
-                bg="rgba(17, 24, 39, 0.95)"
-                _dark={{ bg: "rgba(17, 24, 39, 0.95)" }}
+                bg="cyberpunk.headerBg"
                 backdropFilter="blur(10px)"
                 borderBottom="1px"
-                borderColor="cyan.400"
-                boxShadow="0 0 20px rgba(34, 211, 238, 0.3)"
+                borderColor="cyberpunk.border"
+                boxShadow="cyberpunk.shadowSoft"
                 zIndex={100}
                 alignItems="center"
                 px={6}
@@ -52,10 +50,9 @@ export default function RootLayout({
                     as={Link}
                     href="/"
                     fontWeight="bold"
-                    color="cyan.300"
-                    _dark={{ color: "cyan.300" }}
+                    color="cyberpunk.accent"
                     _hover={{ 
-                      color: "cyan.100",
+                      color: "cyberpunk.text",
                       textShadow: "0 0 10px rgba(34, 211, 238, 0.8)",
                       textDecoration: "none"
                     }}
@@ -67,10 +64,9 @@ export default function RootLayout({
                     as={Link}
                     href="/ProfileList"
                     fontWeight="bold"
-                    color="cyan.300"
-                    _dark={{ color: "cyan.300" }}
+                    color="cyberpunk.accent"
                     _hover={{ 
-                      color: "cyan.100",
+                      color: "cyberpunk.text",
                       textShadow: "0 0 10px rgba(34, 211, 238, 0.8)",
                       textDecoration: "none"
                     }}
@@ -103,18 +99,17 @@ export default function RootLayout({
                 left={0}
                 width="100%"
                 height={FOOTER_HEIGHT}
-                bg="rgba(17, 24, 39, 0.95)"
-                _dark={{ bg: "rgba(17, 24, 39, 0.95)" }}
+                bg="cyberpunk.headerBg"
                 backdropFilter="blur(10px)"
                 borderTop="1px"
-                borderColor="cyan.400"
-                boxShadow="0 0 20px rgba(34, 211, 238, 0.3)"
+                borderColor="cyberpunk.border"
+                boxShadow="cyberpunk.shadowSoft"
                 zIndex={100}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
               >
-                <Text fontSize="sm" color="cyan.400" _dark={{ color: "cyan.400" }}>
+                <Text fontSize="sm" color="cyberpunk.accent">
                   challenge version v3.5
                 </Text>
               </Box>

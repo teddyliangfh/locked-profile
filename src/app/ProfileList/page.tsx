@@ -1,5 +1,5 @@
 "use client";
-import { Heading, Box, Spinner, Center, Container, Text, HStack } from "@chakra-ui/react";
+import { Box, Spinner, Center, Container, Text } from "@chakra-ui/react";
 import { ProfileList } from "@/components/profile/ProfileList";
 import { useUrlQueryState } from "@/hooks/useUrlQueryState";
 import { useCharacters } from "@/hooks/useCharacters";
@@ -15,8 +15,8 @@ export default function ProfileListPage() {
     return (
       <Center minH="100vh">
         <Box textAlign="center">
-          <Spinner size="xl" color="cyan.400" mb={4} />
-          <Text color="cyan.300" _dark={{ color: "cyan.300" }} fontSize="lg">
+          <Spinner size="xl" color="cyberpunk.accent" mb={4} />
+          <Text color="cyberpunk.accent" fontSize="lg">
             Loading character profiles...
           </Text>
         </Box>
@@ -25,20 +25,23 @@ export default function ProfileListPage() {
   }
 
   return (
-    <Container maxW="100%" px={0}>
+    <Container maxW="100%">
       <Box py={8} px={4}>
         {/* Header Section */}
-        <Box mb={8} textAlign="center">
-
-          <Text 
-            color="cyan.200" 
-            _dark={{ color: "cyan.200" }} 
+        <Box mb={8} textAlign="left">
+          <Text
+            fontWeight={500}
             fontSize="lg"
             maxW="600px"
-            mx="auto"
-            textShadow="0 0 10px rgba(34, 211, 238, 0.3)"
+            color="transparent"
+            style={{
+              background: "linear-gradient(81.02deg, rgb(250, 85, 96) -23.49%, rgb(177, 75, 244) 45.66%, rgb(77, 145, 255) 114.8%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent"
+            }}
           >
-            Explore the diverse cast of characters from the Rick and Morty universe
+            Charactor Profiles
           </Text>
         </Box>
 
@@ -49,9 +52,9 @@ export default function ProfileListPage() {
           error={error}
           totalCount={totalCount}
           page={pageNumber}
-          onPageChange={p => setQuery({ pageNumber: p })}
+          onPageChange={(p) => setQuery({ pageNumber: p })}
         />
       </Box>
     </Container>
   );
-} 
+}

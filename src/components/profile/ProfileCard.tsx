@@ -18,10 +18,9 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
       borderWidth="2px"
       borderRadius="xl"
       overflow="hidden"
-      boxShadow="0 0 20px rgba(34, 211, 238, 0.2)"
-      bg="rgba(17, 24, 39, 0.8)"
-      _dark={{ bg: "rgba(17, 24, 39, 0.8)", borderColor: "cyan.400" }}
-      borderColor="cyan.400"
+      boxShadow="cyberpunk.shadowSoft"
+      bg="cyberpunk.cardBg"
+      borderColor="cyberpunk.border"
       maxW="280px"
       w="100%"
       cursor="pointer"
@@ -29,8 +28,8 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
       transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
       _hover={{
         transform: "translateY(-4px)",
-        boxShadow: "0 0 30px rgba(34, 211, 238, 0.4)",
-        borderColor: "cyan.300",
+        boxShadow: "cyberpunk.shadowStrong",
+        borderColor: "cyberpunk.accent",
       }}
       position="relative"
       backdropFilter="blur(10px)"
@@ -88,8 +87,7 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
         <Text 
           fontWeight="bold" 
           fontSize="lg" 
-          color="cyan.300"
-          _dark={{ color: "cyan.300" }}
+          color="cyberpunk.accent"
           w="100%"
           textShadow="0 0 5px rgba(34, 211, 238, 0.3)"
         >
@@ -97,19 +95,19 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
         </Text>
         
         <HStack justify="space-between" w="100%" opacity={0.8}>
-          <Text fontSize="sm" color="cyan.200" _dark={{ color: "cyan.200" }}>
+          <Text fontSize="sm" color="cyberpunk.textDim">
             Species
           </Text>
-          <Text fontSize="sm" fontWeight="medium" color="cyan.100" _dark={{ color: "cyan.100" }}>
+          <Text fontSize="sm" fontWeight="medium" color="cyberpunk.text">
             {character.species}
           </Text>
         </HStack>
 
         <HStack justify="space-between" w="100%" opacity={0.8}>
-          <Text fontSize="sm" color="cyan.200" _dark={{ color: "cyan.200" }}>
+          <Text fontSize="sm" color="cyberpunk.textDim">
             ID
           </Text>
-          <Text fontSize="xs" color="cyan.400" _dark={{ color: "cyan.400" }} fontFamily="mono">
+          <Text fontSize="xs" color="cyberpunk.accent" fontFamily="mono">
             #{character.id}
           </Text>
         </HStack>

@@ -63,12 +63,12 @@ export const ColorModeButton = React.forwardRef<
         size="md"
         ref={ref}
         colorScheme="cyan"
-        borderColor="cyan.400"
-        color="cyan.400"
+        borderColor="cyberpunk.border"
+        color="cyberpunk.accent"
         _hover={{
           bg: "cyan.500",
           color: "gray.900",
-          boxShadow: "0 0 15px rgba(34, 211, 238, 0.6)",
+          boxShadow: "cyberpunk.shadowStrong",
           transform: "translateY(-1px)"
         }}
         transition="all 0.3s ease"

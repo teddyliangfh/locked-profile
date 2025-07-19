@@ -59,71 +59,69 @@ export function BlockingDialog({
         <DialogBackdrop />
         <DialogPositioner>
           <DialogContent
-            bg="rgba(17, 24, 39, 0.95)"
-            _dark={{ bg: "rgba(17, 24, 39, 0.95)" }}
+            bg="cyberpunk.modalBg"
             border="2px"
-            borderColor="cyan.400"
-            boxShadow="0 0 30px rgba(34, 211, 238, 0.4)"
+            borderColor="cyberpunk.border"
+            boxShadow="cyberpunk.shadowStrong"
             backdropFilter="blur(15px)"
             borderRadius="xl"
           >
             {/* Header with title */}
-            <DialogHeader bg="rgba(17, 24, 39, 0.9)" _dark={{ bg: "rgba(17, 24, 39, 0.9)" }}>
+            <DialogHeader bg="cyberpunk.headerBg">
               <DialogTitle 
-                color="cyan.300" 
-                _dark={{ color: "cyan.300" }}
+                color="cyberpunk.accent" 
                 textShadow="0 0 10px rgba(34, 211, 238, 0.5)"
               >
                 Please enter Your Info
               </DialogTitle>
             </DialogHeader>
             {/* Body with form fields */}
-            <DialogBody bg="rgba(17, 24, 39, 0.8)" _dark={{ bg: "rgba(17, 24, 39, 0.8)" }}>
+            <DialogBody bg="cyberpunk.cardBg">
               <Fieldset.Root>
                 <Fieldset.Content>
                   <Field.Root>
-                    <Field.Label color="cyan.400" _dark={{ color: "cyan.400" }}>Username</Field.Label>
-                                          <Input
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        autoFocus
-                        bg="rgba(17, 24, 39, 0.6)"
-                        borderColor="cyan.600"
-                        _focus={{ borderColor: "cyan.400", boxShadow: "0 0 10px rgba(34, 211, 238, 0.3)" }}
-                        color="cyan.100"
-                        _placeholder={{ color: "cyan.600" }}
-                      />
+                    <Field.Label color="cyberpunk.accent">Username</Field.Label>
+                    <Input
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      autoFocus
+                      bg="cyberpunk.bg"
+                      borderColor="cyberpunk.borderDark"
+                      _focus={{ borderColor: "cyberpunk.accent", boxShadow: "cyberpunk.shadowSoft" }}
+                      color="cyberpunk.text"
+                      _placeholder={{ color: "cyberpunk.borderDark" }}
+                    />
                   </Field.Root>
                   <Field.Root>
-                    <Field.Label color="cyan.400" _dark={{ color: "cyan.400" }}>Job Title</Field.Label>
-                                          <Input
-                        value={jobTitle}
-                        onChange={(e) => setJobTitle(e.target.value)}
-                        bg="rgba(17, 24, 39, 0.6)"
-                        borderColor="cyan.600"
-                        _focus={{ borderColor: "cyan.400", boxShadow: "0 0 10px rgba(34, 211, 238, 0.3)" }}
-                        color="cyan.100"
-                        _placeholder={{ color: "cyan.600" }}
-                      />
+                    <Field.Label color="cyberpunk.accent">Job Title</Field.Label>
+                    <Input
+                      value={jobTitle}
+                      onChange={(e) => setJobTitle(e.target.value)}
+                      bg="cyberpunk.bg"
+                      borderColor="cyberpunk.borderDark"
+                      _focus={{ borderColor: "cyberpunk.accent", boxShadow: "cyberpunk.shadowSoft" }}
+                      color="cyberpunk.text"
+                      _placeholder={{ color: "cyberpunk.borderDark" }}
+                    />
                   </Field.Root>
                 </Fieldset.Content>
               </Fieldset.Root>
               {error && <Text color="red.400" fontSize="sm" mt={2}>{error}</Text>}
             </DialogBody>
             {/* Footer with Save and optional Cancel buttons */}
-            <DialogFooter bg="rgba(17, 24, 39, 0.9)" _dark={{ bg: "rgba(17, 24, 39, 0.9)" }}>
+            <DialogFooter bg="cyberpunk.headerBg">
             {onClose && (
               <Dialog.ActionTrigger asChild>
                   <Button 
                     variant="outline" 
                     onClick={onClose}
                     colorScheme="cyan"
-                    borderColor="cyan.400"
-                    color="cyan.400"
+                    borderColor="cyberpunk.border"
+                    color="cyberpunk.accent"
                     _hover={{ 
                       bg: "cyan.500",
                       color: "gray.900",
-                      boxShadow: "0 0 15px rgba(34, 211, 238, 0.6)"
+                      boxShadow: "cyberpunk.shadowStrong"
                     }}
                     transition="all 0.3s ease"
                   >
@@ -138,7 +136,7 @@ export function BlockingDialog({
                 color="gray.900"
                 _hover={{ 
                   bg: "cyan.400",
-                  boxShadow: "0 0 20px rgba(34, 211, 238, 0.8)",
+                  boxShadow: "cyberpunk.shadowStrong",
                   transform: "translateY(-1px)"
                 }}
                 transition="all 0.3s ease"
@@ -151,8 +149,8 @@ export function BlockingDialog({
               <CloseButton 
                 size="sm" 
                 onClick={handleClose}
-                color="cyan.400"
-                _hover={{ color: "cyan.200" }}
+                color="cyberpunk.accent"
+                _hover={{ color: "cyberpunk.text" }}
               />
             </Dialog.CloseTrigger>
           </DialogContent>

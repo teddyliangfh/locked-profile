@@ -5,10 +5,19 @@ import {
   ColorModeProvider,
   type ColorModeProviderProps,
 } from "../components/ui/ColorMode"
+import { cyberpunkTokens } from "../theme/cyberpunk"
+
+const mergedSystem = {
+  ...defaultSystem,
+  tokens: {
+    ...defaultSystem.tokens,
+    ...cyberpunkTokens,
+  },
+};
 
 export function UIProvider(props: ColorModeProviderProps) {
   return (
-    <ChakraProvider value={defaultSystem}>
+    <ChakraProvider value={mergedSystem}>
       <ColorModeProvider {...props} />
     </ChakraProvider>
   )

@@ -49,8 +49,8 @@ export function ProfileList({
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minH="400px">
         <Stack align="center" gap={4}>
-          <Spinner size="xl" color="cyan.400" />
-          <Text color="cyan.300" _dark={{ color: "cyan.300" }}>Loading characters...</Text>
+          <Spinner size="xl" color="cyberpunk.accent" />
+          <Text color="cyberpunk.accent">Loading characters...</Text>
         </Stack>
       </Box>
     );
@@ -61,7 +61,7 @@ export function ProfileList({
       <Box display="flex" justifyContent="center" alignItems="center" minH="400px">
         <Stack align="center" gap={4}>
           <Text color="red.400" fontSize="lg">Failed to load profiles.</Text>
-          <Text color="cyan.300" _dark={{ color: "cyan.300" }} fontSize="sm">
+          <Text color="cyberpunk.accent" fontSize="sm">
             Please try refreshing the page.
           </Text>
         </Stack>
@@ -98,13 +98,12 @@ export function ProfileList({
         {/* Pagination controls with page info */}
         {totalPages > 1 && (
           <Box 
-            bg="rgba(17, 24, 39, 0.8)"
-            _dark={{ bg: "rgba(17, 24, 39, 0.8)", borderColor: "cyan.400" }}
+            bg="cyberpunk.cardBg"
             borderRadius="xl"
-            boxShadow="0 0 20px rgba(34, 211, 238, 0.3)"
+            boxShadow="cyberpunk.shadowStrong"
             p={6}
             border="2px"
-            borderColor="cyan.400"
+            borderColor="cyberpunk.border"
             w="100%"
             maxW="600px"
             backdropFilter="blur(10px)"
@@ -112,10 +111,10 @@ export function ProfileList({
             <VStack gap={4}>
               {/* Page info */}
               <HStack justify="space-between" w="100%">
-                <Text color="cyan.300" _dark={{ color: "cyan.300" }} fontSize="sm">
+                <Text color="cyberpunk.accent" fontSize="sm">
                   Showing {startItem}-{endItem} of {totalCount} characters
                 </Text>
-                <Text color="cyan.300" _dark={{ color: "cyan.300" }} fontSize="sm" fontWeight="medium">
+                <Text color="cyberpunk.accent" fontSize="sm" fontWeight="medium">
                   Page {page} of {totalPages}
                 </Text>
               </HStack>
@@ -133,11 +132,11 @@ export function ProfileList({
                       aria-label="Previous page"
                       colorScheme="cyan"
                       variant="outline"
-                      borderColor="cyan.400"
+                      borderColor="cyberpunk.border"
                       _hover={{ 
                         bg: "cyan.500",
                         color: "gray.900",
-                        boxShadow: "0 0 15px rgba(34, 211, 238, 0.6)",
+                        boxShadow: "cyberpunk.shadowStrong",
                         transform: "translateY(-1px)"
                       }}
                       transition="all 0.3s ease"
@@ -154,11 +153,11 @@ export function ProfileList({
                         variant={pageObj.value === page ? "solid" : "outline"}
                         colorScheme={pageObj.value === page ? "cyan" : "cyan"}
                         size="md"
-                        borderColor="cyan.400"
+                        borderColor="cyberpunk.border"
                         _hover={{ 
                           bg: pageObj.value === page ? "cyan.500" : "cyan.500",
                           color: "gray.900",
-                          boxShadow: "0 0 15px rgba(34, 211, 238, 0.6)",
+                          boxShadow: "cyberpunk.shadowStrong",
                           transform: "translateY(-1px)"
                         }}
                         transition="all 0.3s ease"
@@ -173,11 +172,11 @@ export function ProfileList({
                       aria-label="Next page"
                       colorScheme="cyan"
                       variant="outline"
-                      borderColor="cyan.400"
+                      borderColor="cyberpunk.border"
                       _hover={{ 
                         bg: "cyan.500",
                         color: "gray.900",
-                        boxShadow: "0 0 15px rgba(34, 211, 238, 0.6)",
+                        boxShadow: "cyberpunk.shadowStrong",
                         transform: "translateY(-1px)"
                       }}
                       transition="all 0.3s ease"
