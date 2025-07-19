@@ -11,7 +11,7 @@ export type ColorModeProviderProps = ThemeProviderProps
 
 export function ColorModeProvider(props: ColorModeProviderProps) {
   return (
-    <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
+    <ThemeProvider attribute="class" disableTransitionOnChange defaultTheme="dark" {...props} />
   )
 }
 
@@ -60,14 +60,12 @@ export const ColorModeButton = React.forwardRef<
         onClick={toggleColorMode}
         variant="outline"
         aria-label="Toggle color mode"
-        size="md"
+        size="sm"
         ref={ref}
         colorScheme="cyan"
         borderColor="cyberpunk.border"
         color="cyberpunk.accent"
         _hover={{
-          bg: "cyan.500",
-          color: "gray.900",
           boxShadow: "cyberpunk.shadowStrong",
           transform: "translateY(-1px)"
         }}

@@ -9,7 +9,6 @@ import {
   DialogPositioner,
   Image,
   Text,
-  Stack,
   HStack,
   Badge,
   Box,
@@ -68,7 +67,7 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
             
             <DialogBody p={{ base: 4, md: 8 }}>
               <Box display={{ base: "block", md: "flex" }} gap={{ base: 4, md: 8 }} alignItems="center" w="100%" py={{ base: 2, md: 4 }}>
-                {/* 左侧照片 */}
+                {/* image */}
                 <Box
                   flexShrink={0}
                   w={{ base: "100%", md: "200px" }}
@@ -92,7 +91,7 @@ export function ProfileCardModal({ character, isOpen, onClose }: ProfileCardModa
                     objectFit="cover"
                   />
                 </Box>
-                {/* 右侧信息 */}
+                {/* info */}
                 <VStack gap={2} p={{ base: 2, md: 4 }} align="stretch" flex={1} minW={0}>
                   <Box>
                     <Text fontSize="xs" color="cyberpunk.accent" mb={0}>

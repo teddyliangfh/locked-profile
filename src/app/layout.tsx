@@ -10,8 +10,50 @@ import {
 import Link from "next/link";
 import { AuthGuard } from "@/components/AuthGuard";
 import { ColorModeButton } from "@/components/ui/ColorMode";
+import { usePathname } from "next/navigation";
 const HEADER_HEIGHT = "64px";
 const FOOTER_HEIGHT = "48px";
+
+function NavigationLinks() {
+  const pathname = usePathname();
+  return (
+    <>
+      <ChakraLink
+        as={Link}
+        href="/"
+        fontWeight={pathname === "/" ? "extrabold" : "bold"}
+        color={pathname === "/" ? "cyberpunk.accent" : "cyberpunk.textDim"}
+        textShadow={pathname === "/" ? "0 0 10px rgba(34, 211, 238, 0.8)" : undefined}
+        _hover={{
+          color: "cyberpunk.text",
+          textShadow: "0 0 10px rgba(34, 211, 238, 0.8)",
+          textDecoration: "none"
+        }}
+        _focus={{ outline: "none", boxShadow: "none" }}
+        _active={{ outline: "none", boxShadow: "none" }}
+        transition="all 0.3s ease"
+      >
+        Home
+      </ChakraLink>
+      <ChakraLink
+        as={Link}
+        href="/ProfileList"
+        fontWeight={pathname === "/ProfileList" ? "extrabold" : "bold"}
+        color={pathname === "/ProfileList" ? "cyberpunk.accent" : "cyberpunk.textDim"}
+        textShadow={pathname === "/ProfileList" ? "0 0 10px rgba(162, 89, 247, 0.8)" : undefined}
+        _hover={{
+          color: "cyberpunk.text",
+          textDecoration: "none"
+        }}
+        _focus={{ outline: "none", boxShadow: "none" }}
+        _active={{ outline: "none", boxShadow: "none" }}
+        transition="all 0.3s ease"
+      >
+        Profile List
+      </ChakraLink>
+    </>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -45,34 +87,7 @@ export default function RootLayout({
                 px={6}
               >
                 <Flex as="nav" gap={6}>
-                  <ChakraLink
-                    as={Link}
-                    href="/"
-                    fontWeight="bold"
-                    color="cyberpunk.accent"
-                    _hover={{ 
-                      color: "cyberpunk.text",
-                      textShadow: "0 0 10px rgba(34, 211, 238, 0.8)",
-                      textDecoration: "none"
-                    }}
-                    transition="all 0.3s ease"
-                  >
-                    Home
-                  </ChakraLink>
-                  <ChakraLink
-                    as={Link}
-                    href="/ProfileList"
-                    fontWeight="bold"
-                    color="cyberpunk.accent"
-                    _hover={{ 
-                      color: "cyberpunk.text",
-                      textShadow: "0 0 10px rgba(34, 211, 238, 0.8)",
-                      textDecoration: "none"
-                    }}
-                    transition="all 0.3s ease"
-                  >
-                    Profile List
-                  </ChakraLink>
+                  <NavigationLinks />
                 </Flex>
                 <Box flex="1" />
                 <ColorModeButton />

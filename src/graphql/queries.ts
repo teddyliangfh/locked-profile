@@ -9,29 +9,13 @@ export const GET_CHARACTERS = gql`
         image
         species
         status
+        gender
       }
       info {
         count
         next
         pages
         prev
-      }
-    }
-  }
-`;
-
-export const GET_CHARACTER_DETAIL = gql`
-  query GetCharacter($id: ID!) {
-    character(id: $id) {
-      id
-      name
-      image
-      gender
-      origin {
-        name
-      }
-      location {
-        name
       }
     }
   }
