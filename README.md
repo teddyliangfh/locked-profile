@@ -109,7 +109,7 @@ This project is a submission for the Leonardo.Ai frontend interview challenge (S
 1. **AuthGuard Implementation**: The current `AuthGuard` is a purely client-side solution. A more robust approach would be to use Next.js Middleware to handle route protection and user gating at the edge or server level.
 2. **Persistence with localStorage**: localStorage is used for simplicity in this frontend-only implementation. In a real-world scenario with a backend, user info should be securely managed and updated via server APIs, using secure cookies or session tokens for persistence and authentication.
 3. **GraphQL Code Generation**: Tools like GraphQL Code Generator (codegen) and other GraphQL utilities could be used to automatically generate TypeScript types and React hooks from the GraphQL schema and queries, improving type safety and developer experience.
-4. **Testing**: Due to the challenge's explicit instruction to minimize dependencies and the lack of a testing requirement, tests were not included. In a production scenario, unit and integration tests would be added.
+4. **Testing**: Due to the challenge's instruction to minimize dependencies and the lack of a testing requirement, tests were not included in this main branch. **However, testing is crucial for production-quality software, so I have started some work-in-progress (WIP) unit tests in a separate branch: [test/unit-test](https://github.com/teddyliangfh/locked-profile/tree/test/unit-test). Due to time constraints, this branch is still in progress.**
 
 ## Acknowledgements
 
