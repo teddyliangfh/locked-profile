@@ -68,7 +68,7 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
 
       {/* Image container */}
       <Box position="relative" overflow="hidden" w="100%" h="200px">
-        {/* TODO optimize big image loading */}
+
         <Skeleton loading={!loaded} w="100%" h="200px">
           <NextImage
             src={character.image}
@@ -79,7 +79,7 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
             sizes="(max-width: 280px) 100vw, 280px"
             loading="lazy"
             placeholder="blur"
-            blurDataURL="/placeholder.png"
+            blurDataURL="https://placehold.co/400" // free image placeholder service
             onLoad={() => setLoaded(true)}
           />
         </Skeleton>
