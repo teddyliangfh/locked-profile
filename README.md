@@ -6,17 +6,16 @@
 
 ## Project Overview
 
-This project is a submission for the Leonardo.Ai frontend interview challenge (Stage 2). It is built with Next.js App Router, TypeScript, Chakra UI, and Apollo Client. The app features a blocking user info modal, paginated GraphQL data display, detail modals, a hidden easter egg, and full responsive design, meeting all challenge requirements.
+This project is a submission for the Leonardo.Ai frontend interview challenge. It is built with Next.js App Router, TypeScript, Chakra UI, and Apollo Client. The app features a blocking user info modal, paginated GraphQL data display, detail modals, a hidden easter egg, and full responsive design, meeting all challenge requirements.
 
 ## Tech Stack
 
-- **Next.js (App Router, TypeScript)**: Modern React framework with SSR/SSG, file-based routing, and type safety.
-- **Chakra UI**: Component library for rapid, accessible, and responsive UI development.
-- **Apollo Client**: GraphQL client, used here to connect to the Rick and Morty public API.
-- **Framer Motion**: Animation library, used for the easter egg banner and other UI effects.
-- **Vercel**: Recommended deployment platform.
-- **Git**: Version control.
-- **pnpm**: Recommended package manager for this project.
+- **Next.js (App Router, TypeScript)**
+- **Chakra UI**
+- **Apollo Client**
+- **Vercel**
+- **Git**
+- **pnpm**:
 
 ## Features
 
@@ -25,9 +24,9 @@ This project is a submission for the Leonardo.Ai frontend interview challenge (S
 - Apollo Client fetches paginated character data (with images) from the Rick and Morty GraphQL API.
 - Direct URL access to any page of the paginated data.
 - Clicking a character opens a modal with detailed info and image.
-- **Theme customization:** Full support for both dark and light modes, with a toggle to switch between them. UI displays perfectly in both modes.
-- **Highly responsive:** The layout adapts seamlessly from large desktop screens to mobile devices.
-- **Accessibility friendly:** The app is accessible and scores 91 on Lighthouse Accessibility audits.
+- Theme customization: Full support for both dark and light modes, with a toggle to switch between them. UI displays perfectly in both modes.
+- Highly responsive: The layout adapts seamlessly from desktop screens to mobile devices.
+- Accessibility friendly:The app is accessible and scores 90+ on Lighthouse Accessibility audits.
 - Footer displays the challenge version.
 - Hidden easter egg: entering "Rick Sanchez" as username triggers an animated banner.
 
@@ -109,7 +108,7 @@ This project is a submission for the Leonardo.Ai frontend interview challenge (S
 1. **AuthGuard Implementation**: The current `AuthGuard` is a purely client-side solution. A more robust approach would be to use Next.js Middleware to handle route protection and user gating at the edge or server level.
 2. **Persistence with localStorage**: localStorage is used for simplicity in this frontend-only implementation. In a real-world scenario with a backend, user info should be securely managed and updated via server APIs, using secure cookies or session tokens for persistence and authentication.
 3. **GraphQL Code Generation**: Tools like GraphQL Code Generator (codegen) and other GraphQL utilities could be used to automatically generate TypeScript types and React hooks from the GraphQL schema and queries, improving type safety and developer experience.
-4. **Testing**: Due to the challenge's instruction to minimize dependencies and the lack of a testing requirement, tests were not included in this main branch. **However, testing is crucial for production-quality software, so I have started some work-in-progress (WIP) unit tests in a separate branch: [test/unit-test](https://github.com/teddyliangfh/locked-profile/tree/test/unit-test). Due to time constraints, this branch is still in progress.**
+4. **Testing**: Due to the challenge's instruction to minimize dependencies and the lack of a testing requirement, tests were not included in the main branch. However, testing is crucial for production-quality software, so I’ve started a work-in-progress branch for unit tests [test/unit-test](https://github.com/teddyliangfh/locked-profile/tree/test/unit-test). While the branch is still in progress due to time constraints, the core functionality has been covered.
 
 ## Acknowledgements
 
