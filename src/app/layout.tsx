@@ -16,43 +16,38 @@ const FOOTER_HEIGHT = "48px";
 
 function NavigationLinks() {
   const pathname = usePathname();
+  
+  const links = [
+    { href: "/", label: "Home", accentColor: "rgba(34, 211, 238, 0.8)" },
+    { href: "/ProfileList", label: "Profile List", accentColor: "rgba(162, 89, 247, 0.8)" }
+  ];
+
   return (
     <>
-      <ChakraLink
-        as={Link}
-        href="/"
-        fontWeight={pathname === "/" ? "extrabold" : "bold"}
-        color={pathname === "/" ? "cyberpunk.accent" : "cyberpunk.textDim"}
-        textShadow={pathname === "/" ? "0 0 10px rgba(34, 211, 238, 0.8)" : undefined}
-        _hover={{
-          color: "cyberpunk.text",
-          textShadow: "0 0 10px rgba(34, 211, 238, 0.8)",
-          textDecoration: "none"
-        }}
-        _focus={{ outline: "none", boxShadow: "none" }}
-        _active={{ outline: "none", boxShadow: "none" }}
-        transition="all 0.3s ease"
-        aria-current={pathname === "/" ? "page" : undefined}
-      >
-        Home
-      </ChakraLink>
-      <ChakraLink
-        as={Link}
-        href="/ProfileList"
-        fontWeight={pathname === "/ProfileList" ? "extrabold" : "bold"}
-        color={pathname === "/ProfileList" ? "cyberpunk.accent" : "cyberpunk.textDim"}
-        textShadow={pathname === "/ProfileList" ? "0 0 10px rgba(162, 89, 247, 0.8)" : undefined}
-        _hover={{
-          color: "cyberpunk.text",
-          textDecoration: "none"
-        }}
-        _focus={{ outline: "none", boxShadow: "none" }}
-        _active={{ outline: "none", boxShadow: "none" }}
-        transition="all 0.3s ease"
-        aria-current={pathname === "/ProfileList" ? "page" : undefined}
-      >
-        Profile List
-      </ChakraLink>
+      {links.map(({ href, label, accentColor }) => {
+        const isActive = pathname === href;
+        return (
+          <ChakraLink
+            key={href}
+            as={Link}
+            href={href}
+            fontWeight={isActive ? "extrabold" : "bold"}
+            color={isActive ? "cyberpunk.accent" : "cyberpunk.textDim"}
+            textShadow={isActive ? `0 0 10px ${accentColor}` : undefined}
+            _hover={{
+              color: "cyberpunk.text",
+              textShadow: `0 0 10px ${accentColor}`,
+              textDecoration: "none"
+            }}
+            _focus={{ outline: "none", boxShadow: "none" }}
+            _active={{ outline: "none", boxShadow: "none" }}
+            transition="all 0.3s ease"
+            aria-current={isActive ? "page" : undefined}
+          >
+            {label}
+          </ChakraLink>
+        );
+      })}
     </>
   );
 }
