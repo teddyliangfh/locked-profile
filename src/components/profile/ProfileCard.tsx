@@ -73,10 +73,10 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
           <NextImage
             src={character.image}
             alt={character.name}
-            width={280}
-            height={200}
+            width={300}
+            height={300}
             style={{ objectFit: "cover", width: "100%", height: "200px" }}
-            sizes="(max-width: 280px) 100vw, 280px"
+            sizes="(max-width: 300px) 100vw, 300px"
             loading="lazy"
             placeholder="blur"
             blurDataURL="https://placehold.co/400" // free image placeholder service

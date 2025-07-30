@@ -1,6 +1,7 @@
 "use client";
-import { Box, Spinner, Center, Container, Text } from "@chakra-ui/react";
+import { Box, Spinner, Center, Container, Text, VStack } from "@chakra-ui/react";
 import { ProfileList } from "@/components/profile/ProfileList";
+import { Pagination } from "@/components/ui/Pagination";
 import { useUrlQueryState } from "@/hooks/useUrlQueryState";
 import { useCharacters } from "@/hooks/useCharacters";
 
@@ -9,6 +10,14 @@ export default function ProfileListPage() {
   const { pageNumber, setQuery } = useUrlQueryState();
   // Fetch data for the current page
   const { characters, loading, error, totalCount } = useCharacters(pageNumber);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(totalCount / 20);
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setQuery({ pageNumber: page });
+  };
 
   // Show a centered spinner when loading (centered in the viewport)
   if (loading) {
@@ -41,19 +50,27 @@ export default function ProfileListPage() {
               WebkitTextFillColor: "transparent"
             }}
           >
-            Charactor Profiles
+            Character Profiles
           </Text>
         </Box>
 
-        {/* Profile List Component */}
-        <ProfileList
-          characters={characters}
-          loading={loading}
-          error={error}
-          totalCount={totalCount}
-          page={pageNumber}
-          onPageChange={(p) => setQuery({ pageNumber: p })}
-        />
+        {/* Content with Pagination */}
+        <VStack gap={8} align="center" w="100%">
+          {/* Profile List Component */}
+          <ProfileList
+            characters={characters}
+            loading={loading}
+            error={error}
+          />
+
+          {/* Pagination Component */}
+          <Pagination
+            currentPage={pageNumber}
+            totalPages={totalPages}
+            totalCount={totalCount}
+            onPageChange={handlePageChange}
+          />
+        </VStack>
       </Box>
     </Container>
   );
