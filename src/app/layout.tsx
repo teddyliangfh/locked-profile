@@ -1,56 +1,14 @@
-"use client";
-
 import { RootProvider } from "./RootProvider";
-import {
-  Box,
-  Flex,
-  Text,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
-import Link from "next/link";
+import { Box } from "@chakra-ui/react";
 import { AuthGuard } from "@/components/AuthGuard";
-import { ColorModeButton } from "@/components/ui/ColorMode";
-import { usePathname } from "next/navigation";
-const HEADER_HEIGHT = "64px";
-const FOOTER_HEIGHT = "48px";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
 
-function NavigationLinks() {
-  const pathname = usePathname();
-  
-  const links = [
-    { href: "/", label: "Home", accentColor: "rgba(34, 211, 238, 0.8)" },
-    { href: "/ProfileList", label: "Profile List", accentColor: "rgba(162, 89, 247, 0.8)" }
-  ];
-
-  return (
-    <>
-      {links.map(({ href, label, accentColor }) => {
-        const isActive = pathname === href;
-        return (
-          <ChakraLink
-            key={href}
-            as={Link}
-            href={href}
-            fontWeight={isActive ? "extrabold" : "bold"}
-            color={isActive ? "cyberpunk.accent" : "cyberpunk.textDim"}
-            textShadow={isActive ? `0 0 10px ${accentColor}` : undefined}
-            _hover={{
-              color: "cyberpunk.text",
-              textShadow: `0 0 10px ${accentColor}`,
-              textDecoration: "none"
-            }}
-            _focus={{ outline: "none", boxShadow: "none" }}
-            _active={{ outline: "none", boxShadow: "none" }}
-            transition="all 0.3s ease"
-            aria-current={isActive ? "page" : undefined}
-          >
-            {label}
-          </ChakraLink>
-        );
-      })}
-    </>
-  );
-}
+export const metadata: Metadata = {
+  title: "Rick and Morty profile",
+  description: "A Rick and Morty character profile list",
+};
 
 export default function RootLayout({
   children,
@@ -58,72 +16,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body>
         <RootProvider>
           <AuthGuard>
-            <Box 
-              minH="100vh" 
+            <Box
+              minH="100vh"
               bgGradient="cyberpunk.gradient"
+              display="flex"
+              flexDirection="column"
             >
-              {/* Header */}
-              <Flex
-                as="header"
-                position="fixed"
-                top={0}
-                left={0}
-                width="100%"
-                height={HEADER_HEIGHT}
-                bg="cyberpunk.headerBg"
-                backdropFilter="blur(10px)"
-                borderBottom="1px"
-                borderColor="cyberpunk.border"
-                boxShadow="cyberpunk.shadowSoft"
-                zIndex={100}
-                alignItems="center"
-                px={6}
-              >
-                <Flex as="nav" gap={6}>
-                  <NavigationLinks />
-                </Flex>
-                <Box flex="1" />
-                <ColorModeButton />
-              </Flex>
+              <Header />
 
               <Box
                 as="main"
-                pt={HEADER_HEIGHT}
-                pb={FOOTER_HEIGHT}
+                flex="1"
                 px={2}
                 maxW="container.lg"
                 mx="auto"
                 width="100%"
+                py={4}
               >
                 {children}
               </Box>
 
-              {/* Footer */}
-              <Box
-                as="footer"
-                position="fixed"
-                bottom={0}
-                left={0}
-                width="100%"
-                height={FOOTER_HEIGHT}
-                bg="cyberpunk.headerBg"
-                backdropFilter="blur(10px)"
-                borderTop="1px"
-                borderColor="cyberpunk.border"
-                boxShadow="cyberpunk.shadowSoft"
-                zIndex={100}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Text fontSize="sm" color="cyberpunk.accent">
-                  Challenge version v3.5
-                </Text>
-              </Box>
+              <Footer />
             </Box>
           </AuthGuard>
         </RootProvider>
