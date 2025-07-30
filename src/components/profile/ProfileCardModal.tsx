@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogBackdrop,
   DialogPositioner,
-  Image,
   Text,
   HStack,
   Badge,
@@ -16,6 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import type { Character } from "@/types/character";
+import { SkeletonImage } from "@/components/ui/SkeletonImage";
 
 interface ProfileCardModalProps {
   character: Character | null;
@@ -92,24 +92,26 @@ export function ProfileCardModal({
                 <Box
                   flexShrink={0}
                   w={{ base: "100%", md: "200px" }}
-                  h={{ base: "120px", md: "200px" }}
+                  h={{ base: "150px", md: "200px" }}
                   mx={{ base: "auto", md: 0 }}
                   mb={{ base: 4, md: 0 }}
                   overflow="hidden"
                   borderRadius="lg"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
+                  border="2px"
+                  borderColor="cyberpunk.border"
+                  boxShadow="cyberpunk.shadowSoft"
                   bg="gray.900"
-                  p={{ base: 1, md: 2 }}
-                  boxShadow="md"
+                  p={2}
                 >
-                  <Image
+                  <SkeletonImage
                     src={character.image}
                     alt={character.name}
-                    w="100%"
-                    h="100%"
+                    width={200}
+                    height={200}
                     objectFit="cover"
+                    borderRadius="md"
+                    sizes="(max-width: 768px) 100vw, 200px"
+                    style={{ width: "100%", height: "100%" }}
                   />
                 </Box>
                 {/* info */}

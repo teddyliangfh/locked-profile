@@ -1,13 +1,11 @@
-import { Box,Text, VStack, Badge, HStack, Skeleton } from "@chakra-ui/react";
+import { Box,Text, VStack, Badge, HStack } from "@chakra-ui/react";
 import type { Character } from "@/types/character";
-import NextImage from "next/image";
-import { useState } from "react";
+import { SkeletonImage } from "@/components/ui/SkeletonImage";
 
 interface ProfileCardProps {
   character: Character;
   onClick?: () => void;
 }
-
 
 /**
  * Renders a stylized profile card displaying character information.
@@ -22,8 +20,6 @@ interface ProfileCardProps {
  * - Interactive hover effects for visual feedback.
  */
 export function ProfileCard({ character, onClick }: ProfileCardProps) {
-  const [loaded, setLoaded] = useState(false);
-
   return (
     <Box
       borderWidth="0"
@@ -68,21 +64,16 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
 
       {/* Image container */}
       <Box position="relative" overflow="hidden" w="100%" h="200px">
-
-        <Skeleton loading={!loaded} w="100%" h="200px">
-          <NextImage
-            src={character.image}
-            alt={character.name}
-            width={300}
-            height={300}
-            style={{ objectFit: "cover", width: "100%", height: "200px" }}
-            sizes="(max-width: 300px) 100vw, 300px"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="https://placehold.co/400" // free image placeholder service
-            onLoad={() => setLoaded(true)}
-          />
-        </Skeleton>
+        <SkeletonImage
+          src={character.image}
+          alt={character.name}
+          width={300}
+          height={300}
+          objectFit="cover"
+          style={{ width: "100%", height: "200px" }}
+          sizes="(max-width: 300px) 100vw, 300px"
+        />
+        
         {/* Gradient overlay for better text readability */}
         <Box
           position="absolute"
@@ -98,31 +89,41 @@ export function ProfileCard({ character, onClick }: ProfileCardProps) {
       </Box>
 
       {/* Content */}
-      <VStack align="start" gap={2} p={4}>
-        <Text
-          fontWeight="bold"
-          fontSize="lg"
-          color="cyberpunk.accent"
-          w="100%"
-          textShadow="0 0 5px rgba(34, 211, 238, 0.3)"
-        >
-          {character.name}
-        </Text>
-
-        <HStack justify="space-between" w="100%" opacity={0.8}>
-          <Text fontSize="sm" color="cyberpunk.textDim">
-            Species
+      <VStack
+        p={4}
+        gap={2}
+        align="stretch"
+        bg="cyberpunk.cardBg"
+        backdropFilter="blur(10px)"
+      >
+        <Box>
+          <Text
+            fontSize="lg"
+            fontWeight="bold"
+            color="cyberpunk.text"
+            mb={1}
+            overflow="hidden"
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+          >
+            {character.name}
           </Text>
-          <Text fontSize="sm" fontWeight="medium" color="cyberpunk.text">
+          <Text
+            fontSize="sm"
+            color="cyberpunk.textDim"
+            overflow="hidden"
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+          >
             {character.species}
           </Text>
-        </HStack>
-
-        <HStack justify="space-between" w="100%" opacity={0.8}>
-          <Text fontSize="sm" color="cyberpunk.textDim">
-            ID
-          </Text>
-          <Text fontSize="xs" color="cyberpunk.accent" fontFamily="mono">
+        </Box>
+        <HStack justify="space-between" align="center">
+          <Text
+            fontSize="xs"
+            color="cyberpunk.accent"
+            fontFamily="mono"
+          >
             #{character.id}
           </Text>
         </HStack>
