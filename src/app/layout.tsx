@@ -3,12 +3,16 @@ import { Box } from "@chakra-ui/react";
 import { AuthGuard } from "@/components/AuthGuard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Rick and Morty profile",
   description: "A Rick and Morty character profile list",
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
